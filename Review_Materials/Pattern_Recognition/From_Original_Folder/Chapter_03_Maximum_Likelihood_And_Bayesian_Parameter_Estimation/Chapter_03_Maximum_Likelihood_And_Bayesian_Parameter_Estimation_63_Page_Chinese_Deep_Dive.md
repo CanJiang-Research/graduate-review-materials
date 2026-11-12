@@ -766,7 +766,7 @@ $$
 设 $x=\mu+\varepsilon$，其中 $\mu\mid\mathcal D\sim N(\mu_n,\sigma_n^2)$，$\varepsilon\sim N(0,\sigma^2)$ 且独立。两个独立高斯变量相加仍是高斯：
 
 $$
-E[x\mid\mathcal D]=\mu_n,\qquad\operatorname{Var}(x\mid\mathcal D)=\sigma_n^2+\sigma^2.
+E[x\mid\mathcal D]=\mu_n,\qquad\mathrm{Var}(x\mid\mathcal D)=\sigma_n^2+\sigma^2.
 $$
 
 ### PDF 第 26 页（课件 27）｜多维高斯贝叶斯估计

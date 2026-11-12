@@ -2256,7 +2256,7 @@ $$
 
 $$
 (\lambda_{21}-\lambda_{11})P(\omega_1\mid x)
->
+\;>\;
 (\lambda_{12}-\lambda_{22})P(\omega_2\mid x)
 $$
 
@@ -2265,7 +2265,7 @@ $$
 $$
 \boxed{
 \frac{p(x\mid\omega_1)}{p(x\mid\omega_2)}
->
+\;>\;
 \frac{\lambda_{12}-\lambda_{22}}
 {\lambda_{21}-\lambda_{11}}
 \frac{P(\omega_2)}{P(\omega_1)}
@@ -3287,7 +3287,7 @@ $$
 
 $$
 \boxed{
-\operatorname{Var}(X)=E[(X-E[X])^2]
+\mathrm{Var}(X)=E[(X-E[X])^2]
 }
 $$
 
@@ -3300,27 +3300,27 @@ $$
 则：
 
 $$
-\operatorname{Var}(X)=E[(X-\mu)^2]
+\mathrm{Var}(X)=E[(X-\mu)^2]
 $$
 
 离散情况：
 
 $$
-\operatorname{Var}(X)
+\mathrm{Var}(X)
 =\sum_{i=1}^{c}(x_i-\mu)^2P(x_i)
 $$
 
 连续情况：
 
 $$
-\operatorname{Var}(X)
+\mathrm{Var}(X)
 =\int_{-\infty}^{+\infty}(x-\mu)^2p(x)\,dx
 $$
 
 记号：
 
 $$
-\boxed{\sigma^2=\operatorname{Var}(X)}
+\boxed{\sigma^2=\mathrm{Var}(X)}
 $$
 
 其中 $\sigma$ 是标准差（Standard Deviation）。
@@ -3354,7 +3354,7 @@ $$
 假设三种取值等概率，A 的方差：
 
 $$
-\operatorname{Var}(A)
+\mathrm{Var}(A)
 =\frac{(9-10)^2+(10-10)^2+(11-10)^2}{3}
 $$
 
@@ -3365,7 +3365,7 @@ $$
 B 的方差：
 
 $$
-\operatorname{Var}(B)
+\mathrm{Var}(B)
 =\frac{(0-10)^2+(10-10)^2+(20-10)^2}{3}
 $$
 
@@ -3425,7 +3425,7 @@ E[X]=\mu
 $$
 
 $$
-\operatorname{Var}(X)=\sigma^2
+\mathrm{Var}(X)=\sigma^2
 $$
 
 **② 概念解释**
@@ -3642,7 +3642,7 @@ $$
 对角线元素：
 
 $$
-\sigma_{ii}=\operatorname{Var}(x_i)=\sigma_i^2
+\sigma_{ii}=\mathrm{Var}(x_i)=\sigma_i^2
 $$
 
 协方差矩阵具有两个性质：
@@ -3709,7 +3709,7 @@ $$
 $$
 \mathbf{a}^T\Sigma\mathbf{a}
 =\;
-\operatorname{Var}(\mathbf{a}^T\mathbf{x})\geq0
+\mathrm{Var}(\mathbf{a}^T\mathbf{x})\geq0
 $$
 
 而方差不可能为负。

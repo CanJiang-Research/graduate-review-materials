@@ -429,10 +429,10 @@ $$
 
 **① 原文中文翻译**
 
-每个类别的似然函数参数形式已知：$p(\mathbf x\mid\omega_j,\theta_j)$。但现在 $\theta_j$ 不再被视为固定的未知数，而被看作**随机变量**。因此不应只得到一个 ML 点估计 $\hat\theta_j$ 再代入分类。课件提出要充分利用训练数据 $\mathcal D^*=\mathcal D_1\cup\cdots\cup\mathcal D_c$，计算：
+每个类别的似然函数参数形式已知：$p(\mathbf x\mid\omega_j,\theta_j)$。但现在 $\theta_j$ 不再被视为固定的未知数，而被看作**随机变量**。因此不应只得到一个 ML 点估计 $\hat\theta_j$ 再代入分类。课件提出要充分利用训练数据 $\mathcal D^{*}=\mathcal D_1\cup\cdots\cup\mathcal D_c$，计算：
 
 $$
-P(\omega_j\mid\mathbf x,\mathcal D^*).
+P(\omega_j\mid\mathbf x,\mathcal D^{*}).
 $$
 
 **② 概念解释**
@@ -450,22 +450,22 @@ MLE 最终通常给出“均值估计为 10.5”；贝叶斯估计还可以回�
 采用联合概率分解：
 
 $$
-P(\omega_j\mid\mathbf x,\mathcal D^*)=\frac{p(\omega_j,\mathbf x,\mathcal D^*)}{\sum_i p(\omega_i,\mathbf x,\mathcal D^*)}.
+P(\omega_j\mid\mathbf x,\mathcal D^{*})=\frac{p(\omega_j,\mathbf x,\mathcal D^{*})}{\sum_i p(\omega_i,\mathbf x,\mathcal D^{*})}.
 $$
 
 由链式法则：
 
 $$
-p(\omega_j,\mathbf x,\mathcal D^*)=p(\mathcal D^*)P(\omega_j\mid\mathcal D^*)p(\mathbf x\mid\omega_j,\mathcal D^*).
+p(\omega_j,\mathbf x,\mathcal D^{*})=p(\mathcal D^{*})P(\omega_j\mid\mathcal D^{*})p(\mathbf x\mid\omega_j,\mathcal D^{*}).
 $$
 
 所以：
 
 $$
-P(\omega_j\mid\mathbf x,\mathcal D^*)=\frac{P(\omega_j\mid\mathcal D^*)p(\mathbf x\mid\omega_j,\mathcal D^*)}{\sum_iP(\omega_i\mid\mathcal D^*)p(\mathbf x\mid\omega_i,\mathcal D^*)}.
+P(\omega_j\mid\mathbf x,\mathcal D^{*})=\frac{P(\omega_j\mid\mathcal D^{*})p(\mathbf x\mid\omega_j,\mathcal D^{*})}{\sum_iP(\omega_i\mid\mathcal D^{*})p(\mathbf x\mid\omega_i,\mathcal D^{*})}.
 $$
 
-课件采用两个简化假设：$P(\omega_j\mid\mathcal D^*)=P(\omega_j)$，以及 $p(\mathbf x\mid\omega_j,\mathcal D^*)=p(\mathbf x\mid\omega_j,\mathcal D_j)$。
+课件采用两个简化假设：$P(\omega_j\mid\mathcal D^{*})=P(\omega_j)$，以及 $p(\mathbf x\mid\omega_j,\mathcal D^{*})=p(\mathbf x\mid\omega_j,\mathcal D_j)$。
 
 **② 概念解释**
 
@@ -474,7 +474,7 @@ $$
 **③ 结果**
 
 $$
-\boxed{P(\omega_j\mid\mathbf x,\mathcal D^*)=\frac{P(\omega_j)p(\mathbf x\mid\omega_j,\mathcal D_j)}{\sum_i P(\omega_i)p(\mathbf x\mid\omega_i,\mathcal D_i)}}.
+\boxed{P(\omega_j\mid\mathbf x,\mathcal D^{*})=\frac{P(\omega_j)p(\mathbf x\mid\omega_j,\mathcal D_j)}{\sum_i P(\omega_i)p(\mathbf x\mid\omega_i,\mathcal D_i)}}.
 $$
 
 ### PDF 第 17 页（课件 18）｜关键：后验预测密度
@@ -546,7 +546,7 @@ $$
 阶段 III：代入贝叶斯分类公式：
 
 $$
-\boxed{P(\omega_j\mid\mathbf x,\mathcal D^*)=\frac{P(\omega_j)p(\mathbf x\mid\omega_j,\mathcal D_j)}{\sum_iP(\omega_i)p(\mathbf x\mid\omega_i,\mathcal D_i)}}.
+\boxed{P(\omega_j\mid\mathbf x,\mathcal D^{*})=\frac{P(\omega_j)p(\mathbf x\mid\omega_j,\mathcal D_j)}{\sum_iP(\omega_i)p(\mathbf x\mid\omega_i,\mathcal D_i)}}.
 $$
 
 **② 概念解释**
@@ -634,7 +634,7 @@ $$
 把一维高斯先验和 $n$ 个高斯似然相乘：
 
 $$
-p(\mu\mid\mathcal D)=\alpha'\exp\left\{-\frac12\left[\frac{(\mu-\mu_0)^2}{\sigma_0^2}+\sum_{k=1}^n\frac{(\mu-x_k)^2}{\sigma^2}\right]\right\}.
+p(\mu\mid\mathcal D)=\alpha'\exp\left\lbrace-\frac12\left[\frac{(\mu-\mu_0)^2}{\sigma_0^2}+\sum_{k=1}^n\frac{(\mu-x_k)^2}{\sigma^2}\right]\right\rbrace.
 $$
 
 把括号中的平方项展开，关于 $\mu$ 的二次项系数为：
@@ -984,7 +984,7 @@ HMM 同时使用两个条件独立性假设：**状态的一阶马尔可夫性**
 完整模型参数：$\theta=\{A,B,\pi\}$；观测符号序列为 $\mathbf V^T$。
 
 1. **Evaluation（评估）**：给定 $\theta$，计算 $P(\mathbf V^T\mid\theta)$。
-2. **Decoding（解码）**：给定 $\theta$ 与 $\mathbf V^T$，求最可能的隐藏状态序列 $\boldsymbol\omega^*$。
+2. **Decoding（解码）**：给定 $\theta$ 与 $\mathbf V^T$，求最可能的隐藏状态序列 $\boldsymbol\omega^{*}$。
 3. **Learning（学习）**：给定 $\mathbf V^T$，寻找使 $P(\mathbf V^T\mid\theta)$ 最大的模型参数 $\theta$。
 
 **② 概念解释**
@@ -1252,13 +1252,13 @@ $$
 给定模型参数与观测序列，寻找最有可能的隐藏状态序列：
 
 $$
-\boxed{\boldsymbol\omega^*=\arg\max_{\boldsymbol\omega^T}P(\boldsymbol\omega^T\mid\mathbf V^T,\theta)}.
+\boxed{\boldsymbol\omega^{*}=\arg\max_{\boldsymbol\omega^T}P(\boldsymbol\omega^T\mid\mathbf V^T,\theta)}.
 $$
 
 因为 $P(\mathbf V^T\mid\theta)$ 与候选状态路径无关，所以等价于：
 
 $$
-\boxed{\boldsymbol\omega^*=\arg\max_{\boldsymbol\omega^T}P(\boldsymbol\omega^T,\mathbf V^T\mid\theta)}.
+\boxed{\boldsymbol\omega^{*}=\arg\max_{\boldsymbol\omega^T}P(\boldsymbol\omega^T,\mathbf V^T\mid\theta)}.
 $$
 
 朴素方法枚举全部路径，计算量随 $c^T$ 指数增长，不可行。

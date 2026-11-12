@@ -1,6 +1,6 @@
 # 《模式识别》第二章：贝叶斯决策理论
 
-> 图表使用同目录 `Bayesian_Decision_Theory_Assets/` 中的 PNG 文件，以便 GitHub 正常渲染。
+> 图表资源放在同目录 `Bayesian_Decision_Theory_Assets/` 文件夹中，GitHub 页面可直接显示。
 
 Chapter 2 — Bayesian Decision Theory · 60 页逐页中文精讲
 
@@ -71,9 +71,11 @@ Pattern Recognition — Spring Semester
 $$
 P(\text{鲈鱼})=0.7
 $$
+
 $$
 P(\text{鲑鱼})=0.3
 $$
+
 这里的 $P$ 表示概率（Probability）。
 
 我们并没有百分之百确定它的种类，但仍然需要输出一个结果。通常可以选择概率更高的类别。
@@ -124,6 +126,7 @@ flowchart LR
 $$
 P(\text{鲈鱼}\mid\text{长度}=30)
 $$
+
 这表示：**已知鱼的长度是 30 cm，它属于鲈鱼的概率是多少？**
 
 竖线 $\mid$ 的意思是“在……条件下”。
@@ -147,6 +150,7 @@ $$
 $$
 \boxed{P(H\mid X)=\frac{P(H)P(X\mid H)}{P(X)}}
 $$
+
 课件对各个符号的定义如下。
 
 | 符号 | 中文含义 | 鱼分类的例子 |
@@ -173,6 +177,7 @@ $$
 $$
 P(H)=0.3
 $$
+
 即随机抓到一条鲑鱼的概率是 30%。
 
 **似然（Likelihood）**
@@ -184,6 +189,7 @@ $$
 $$
 P(X\mid H)
 $$
+
 注意这里是“已知类别，研究特征”。
 
 **后验概率（Posterior Probability）**
@@ -195,6 +201,7 @@ $$
 $$
 P(H\mid X)
 $$
+
 注意这里是“已知特征，推断类别”。
 
 **贝叶斯公式的直观关系**
@@ -213,16 +220,19 @@ flowchart LR
 $$
 P(H)=0.3,\qquad P(X\mid H)=0.8
 $$
+
 并且：
 
 $$
 P(X)=0.4
 $$
+
 那么：
 
 $$
 P(H\mid X)=\frac{0.3\times0.8}{0.4}=0.6
 $$
+
 也就是说，在观察之前，我们认为是鲑鱼的概率只有 30%；看到相应特征之后，概率提高到了 60%。
 
 这就是**通过证据更新原有判断**。
@@ -248,9 +258,11 @@ $$
 $$
 \omega_1=\text{鲈鱼（Sea bass）}
 $$
+
 $$
 \omega_2=\text{鲑鱼（Salmon）}
 $$
+
 用离散随机变量 $\omega$ 表示鱼所属的类别。
 
 **② 概念解释**
@@ -264,6 +276,7 @@ $$
 $$
 X\in\{1,2,3,4,5,6\}
 $$
+
 随机变量 $X$ 可能取六个值。
 
 类似地，鱼的类别变量满足：
@@ -271,6 +284,7 @@ $$
 $$
 \omega\in\{\omega_1,\omega_2\}
 $$
+
 两种可能的结果分别是鲈鱼和鲑鱼。
 
 为什么使用希腊字母 $\omega$？
@@ -284,6 +298,7 @@ $$
 $$
 \omega_1,\omega_2,\ldots,\omega_c
 $$
+
 就理解为第 1 类、第 2 类、一直到第 $c$ 类。
 
 其中 $c$ 是类别总数。
@@ -301,11 +316,13 @@ $$
 $$
 P(\omega_i)\geq0
 $$
+
 以及：
 
 $$
 \boxed{\sum_{i=1}^{c}P(\omega_i)=1}
 $$
+
 分别称为非负性（Non-negativity）和归一化（Normalization）。
 
 如果捕获的鲈鱼和鲑鱼数量相同：
@@ -313,11 +330,13 @@ $$
 $$
 P(\omega_1)=P(\omega_2)=\frac12
 $$
+
 如果捕获的鲈鱼数量更多：
 
 $$
 P(\omega_1)=\frac23,\qquad P(\omega_2)=\frac13
 $$
+
 **② 概念解释**
 
 先解释求和符号：
@@ -325,6 +344,7 @@ $$
 $$
 \sum_{i=1}^{c}P(\omega_i)
 $$
+
 读作：“从 $i=1$ 到 $i=c$，把每个类别的概率加起来。”
 
 例如三个类别：
@@ -332,11 +352,13 @@ $$
 $$
 P(\omega_1)=0.2,\quad P(\omega_2)=0.3,\quad P(\omega_3)=0.5
 $$
+
 那么：
 
 $$
 0.2+0.3+0.5=1
 $$
+
 为什么必须等于 1？
 
 因为假设所有可能类别已经完整列出，那么样本必然属于其中某个类别。
@@ -348,9 +370,11 @@ $$
 $$
 P(\omega_1)=\frac{700}{1000}=0.7
 $$
+
 $$
 P(\omega_2)=\frac{300}{1000}=0.3
 $$
+
 这是一种通过历史频率估计先验概率的方式。
 
 ---
@@ -364,8 +388,14 @@ $$
 朴素决策规则（Naive Decision Rule）：
 
 $$
-\boxed{ \begin{cases} \text{判为 }\omega_1,&P(\omega_1)>P(\omega_2)\\ \text{判为 }\omega_2,&\text{其他情况} \end{cases} }
+\boxed{
+\begin{cases}
+\text{判为 }\omega_1,&P(\omega_1)>P(\omega_2)\\
+\text{判为 }\omega_2,&\text{其他情况}
+\end{cases}
+}
 $$
+
 课件指出：
 
 - 在没有观测信息时，这是能够采取的最好方法。
@@ -383,6 +413,7 @@ $$
 $$
 P(\omega_1)=0.9,\quad P(\omega_2)=0.1
 $$
+
 如果完全无法观察鱼的特征，那么永远选择鲈鱼是合理的。
 
 但是，如果两个概率是：
@@ -390,6 +421,7 @@ $$
 $$
 P(\omega_1)=0.51,\quad P(\omega_2)=0.49
 $$
+
 即使全部预测为鲈鱼，也只有 51% 的平均正确率。
 
 **③ 理解与拓展**
@@ -413,11 +445,13 @@ $$
 $$
 p(x)\geq0
 $$
+
 以及：
 
 $$
 \boxed{\int_{-\infty}^{+\infty}p(x)\,dx=1}
 $$
+
 对于连续随机变量，讨论它恰好等于某个具体数值的概率通常没有实际意义，因为该概率几乎总是零。
 
 因此，我们研究随机变量落入某个区间的概率。
@@ -427,6 +461,7 @@ $$
 $$
 \boxed{P(x\in R)=\int_a^b p(x)\,dx}
 $$
+
 **② 概念解释**
 
 这是概率论中非常重要的一页。
@@ -440,6 +475,7 @@ $$
 $$
 P(X=3)=\frac16
 $$
+
 **连续随机变量**：例如一个人的身高，可以是 170 cm、170.1 cm、170.12 cm，也可以继续增加小数位。
 
 因此通常不能讨论“身高恰好为无限精度的 170 cm”的非零概率。
@@ -470,16 +506,19 @@ $$
 $$
 p(x)=0.1,\qquad 0\leq x\leq10
 $$
+
 求 $x$ 在 2 到 5 之间的概率：
 
 $$
 P(2\leq x\leq5)=\int_2^5 0.1\,dx
 $$
+
 因为图形是一个长方形：
 
 $$
 =0.1\times(5-2)=0.3
 $$
+
 所以概率是 30%。
 
 需要记住：**概率密度不是概率，密度值本身甚至可以大于 1，但区间积分得到的概率不能大于 1。**
@@ -497,6 +536,7 @@ $$
 $$
 p(x\mid\omega)
 $$
+
 它表示已知自然状态（类别）为 $\omega$ 时，变量 $x$ 的概率密度函数。
 
 满足：
@@ -504,14 +544,17 @@ $$
 $$
 p(x\mid\omega)\geq0
 $$
+
 $$
 \int_{-\infty}^{+\infty}p(x\mid\omega)\,dx=1
 $$
+
 类条件概率密度描述不同类别下观测值分布的差异，因此通常有：
 
 $$
 p(x\mid\omega_1)\neq p(x\mid\omega_2)
 $$
+
 **② 概念解释**
 
 这里非常容易混淆：
@@ -519,11 +562,13 @@ $$
 $$
 p(x\mid\omega_1)
 $$
+
 和：
 
 $$
 P(\omega_1\mid x)
 $$
+
 **前者**：已知鱼是鲈鱼，它出现某种亮度的密度是多少？
 
 **后者**：已经看到某种亮度，它是鲈鱼的概率是多少？
@@ -541,6 +586,7 @@ $$
 $$
 p(x\mid\omega_1)>p(x\mid\omega_2)
 $$
+
 这说明该亮度在鲈鱼群体中相对更常见。
 
 但**类条件密度更大，不一定意味着后验概率更大**，还需要结合先验概率。这正是贝叶斯决策的意义。
@@ -599,6 +645,7 @@ $$
 $$
 P(\omega_j\mid x^*)
 $$
+
 即利用观测信息得到的后验概率。
 
 通过贝叶斯公式，可以把先验概率转换成后验概率。
@@ -608,8 +655,15 @@ $$
 核心计算流程如下：
 
 $$
-\boxed{ \underbrace{P(\omega_j)}_{\text{先验}} + \underbrace{p(x\mid\omega_j)}_{\text{似然}} \longrightarrow \underbrace{P(\omega_j\mid x)}_{\text{后验}} }
+\boxed{
+\underbrace{P(\omega_j)}_{\text{先验}}
++
+\underbrace{p(x\mid\omega_j)}_{\text{似然}}
+\longrightarrow
+\underbrace{P(\omega_j\mid x)}_{\text{后验}}
+}
 $$
+
 这里的加号只表示两种信息共同参与计算，不是说直接把两个数字相加。
 
 真正计算时，先验和似然需要相乘，再除以归一化因子。
@@ -635,32 +689,42 @@ $$
 $$
 p(\omega,x)
 $$
+
 边缘分布：
 
 $$
 P(\omega)=\int_{-\infty}^{+\infty}p(\omega,x)\,dx
 $$
+
 $$
 p(x)=\sum_{j=1}^{c}p(\omega_j,x)
 $$
+
 由联合分布的两种表示方式：
 
 $$
 p(\omega,x)=P(\omega\mid x)p(x)
 $$
+
 $$
 p(\omega,x)=P(\omega)p(x\mid\omega)
 $$
+
 得到：
 
 $$
 P(\omega\mid x)p(x)=P(\omega)p(x\mid\omega)
 $$
+
 因此：
 
 $$
-\boxed{ P(\omega\mid x)= \frac{p(x\mid\omega)P(\omega)}{p(x)} }
+\boxed{
+P(\omega\mid x)=
+\frac{p(x\mid\omega)P(\omega)}{p(x)}
+}
 $$
+
 **② 概念解释**
 
 **联合分布**：同时考虑两个变量的情况。
@@ -674,8 +738,11 @@ $$
 对于所有类别：
 
 $$
-\boxed{ p(x)=\sum_{j=1}^{c}p(x\mid\omega_j)P(\omega_j) }
+\boxed{
+p(x)=\sum_{j=1}^{c}p(x\mid\omega_j)P(\omega_j)
+}
 $$
+
 这就是在当前场景下的全概率公式（Law of Total Probability）。
 
 **③ 两类问题的完整写法**
@@ -683,13 +750,20 @@ $$
 如果只有鲈鱼和鲑鱼：
 
 $$
-p(x)=p(x\mid\omega_1)P(\omega_1) +p(x\mid\omega_2)P(\omega_2)
+p(x)=p(x\mid\omega_1)P(\omega_1)
++p(x\mid\omega_2)P(\omega_2)
 $$
+
 所以：
 
 $$
-\boxed{ P(\omega_1\mid x)= \frac{p(x\mid\omega_1)P(\omega_1)} {p(x\mid\omega_1)P(\omega_1)+p(x\mid\omega_2)P(\omega_2)} }
+\boxed{
+P(\omega_1\mid x)=
+\frac{p(x\mid\omega_1)P(\omega_1)}
+{p(x\mid\omega_1)P(\omega_1)+p(x\mid\omega_2)P(\omega_2)}
+}
 $$
+
 这个完整表达式值得认真掌握，后面的计算题会反复使用。
 
 ---
@@ -701,15 +775,19 @@ $$
 对于 $c$ 个类别：
 
 $$
-P(\omega_j\mid x) =\frac{p(x\mid\omega_j)P(\omega_j)}{p(x)}
+P(\omega_j\mid x)
+=\frac{p(x\mid\omega_j)P(\omega_j)}{p(x)}
 $$
+
 贝叶斯决策规则：
 
 如果：
 
 $$
-P(\omega_j\mid x)>P(\omega_i\mid x) \qquad \forall i\neq j
+P(\omega_j\mid x)>P(\omega_i\mid x)
+\qquad \forall i\neq j
 $$
+
 则判定样本属于 $\omega_j$。
 
 课件说明：
@@ -723,6 +801,7 @@ $$
 $$
 p(x)=\sum_{j=1}^{c}p(x\mid\omega_j)P(\omega_j)
 $$
+
 **② 概念解释**
 
 为什么可以去掉分母？
@@ -732,21 +811,28 @@ $$
 $$
 P(\omega_1\mid x)=\frac{0.24}{0.4}=0.6
 $$
+
 $$
 P(\omega_2\mid x)=\frac{0.16}{0.4}=0.4
 $$
+
 因为两个分母相同，直接比较：
 
 $$
 0.24>0.16
 $$
+
 就已经能够确定哪个后验概率更大。
 
 因此分类时可以使用：
 
 $$
-\boxed{ \omega^*=\arg\max_{\omega_i} p(x\mid\omega_i)P(\omega_i) }
+\boxed{
+\omega^*=\arg\max_{\omega_i}
+p(x\mid\omega_i)P(\omega_i)
+}
 $$
+
 其中 $\arg\max$ 表示“使表达式取得最大值的那个类别”。
 
 **③ 注意事项**
@@ -766,13 +852,16 @@ $$
 贝叶斯公式：
 
 $$
-P(\omega_j\mid x) =\frac{p(x\mid\omega_j)P(\omega_j)}{p(x)}
+P(\omega_j\mid x)
+=\frac{p(x\mid\omega_j)P(\omega_j)}{p(x)}
 $$
+
 情况一：所有类别先验概率相等。
 
 $$
 P(\omega_1)=P(\omega_2)=\cdots=P(\omega_c)=\frac1c
 $$
+
 此时分类结果由似然决定。
 
 情况二：所有类别在给定观测 $x$ 处的似然相等。
@@ -780,6 +869,7 @@ $$
 $$
 p(x\mid\omega_1)=p(x\mid\omega_2)=\cdots=p(x\mid\omega_c)
 $$
+
 此时分类退化为只使用先验概率的朴素决策规则。
 
 通常，贝叶斯决策需要同时考虑先验概率和似然函数。
@@ -803,6 +893,7 @@ $$
 $$
 \boxed{\text{后验}\propto\text{先验}\times\text{似然}}
 $$
+
 符号 $\propto$ 表示“成正比”。
 
 这是贝叶斯分类最值得记住的关系之一。
@@ -818,16 +909,20 @@ $$
 定义：
 
 $$
-\omega_1=\text{鲈鱼},\qquad \omega_2=\text{鲑鱼}
+\omega_1=\text{鲈鱼},\qquad
+\omega_2=\text{鲑鱼}
 $$
+
 先验概率：
 
 $$
 P(\omega_1)=\frac23
 $$
+
 $$
 P(\omega_2)=\frac13
 $$
+
 问题：
 
 两种鱼各自的后验概率曲线应该是什么样的？
@@ -843,11 +938,17 @@ $$
 因此：
 
 $$
-P(\omega_1\mid x)= \frac{\frac23 p(x\mid\omega_1)} {\frac23p(x\mid\omega_1)+\frac13p(x\mid\omega_2)}
+P(\omega_1\mid x)=
+\frac{\frac23 p(x\mid\omega_1)}
+{\frac23p(x\mid\omega_1)+\frac13p(x\mid\omega_2)}
 $$
+
 $$
-P(\omega_2\mid x)= \frac{\frac13 p(x\mid\omega_2)} {\frac23p(x\mid\omega_1)+\frac13p(x\mid\omega_2)}
+P(\omega_2\mid x)=
+\frac{\frac13 p(x\mid\omega_2)}
+{\frac23p(x\mid\omega_1)+\frac13p(x\mid\omega_2)}
 $$
+
 **③ 理解与拓展**
 
 即使某个亮度值下，鲑鱼的似然略大于鲈鱼的似然，鲈鱼仍有可能因为先验概率较高而获得更大的后验概率。
@@ -882,8 +983,11 @@ $$
 即：
 
 $$
-\boxed{ P(\omega_1\mid x)+P(\omega_2\mid x)=1 }
+\boxed{
+P(\omega_1\mid x)+P(\omega_2\mid x)=1
+}
 $$
+
 **② 概念解释**
 
 假设亮度为 $x=12$ 时：
@@ -891,9 +995,11 @@ $$
 $$
 P(\omega_1\mid x)=0.7
 $$
+
 $$
 P(\omega_2\mid x)=0.3
 $$
+
 那么选择鲈鱼。
 
 如果在另一个亮度：
@@ -901,9 +1007,11 @@ $$
 $$
 P(\omega_1\mid x)=0.4
 $$
+
 $$
 P(\omega_2\mid x)=0.6
 $$
+
 那么选择鲑鱼。
 
 第 16 页原图中，两条曲线在某些位置相交。
@@ -913,6 +1021,7 @@ $$
 $$
 P(\omega_1\mid x)=P(\omega_2\mid x)
 $$
+
 这些位置就是后面将学习的决策边界在一维情况下的表现。
 
 **③ 理解与拓展**
@@ -944,6 +1053,7 @@ $$
 $$
 x\in\{+,-\}
 $$
+
 即阳性（Positive）或阴性（Negative）。
 
 已知：
@@ -965,32 +1075,39 @@ $$
 $$
 \omega_1=\text{患癌症}
 $$
+
 $$
 \omega_2=\text{未患癌症}
 $$
+
 先验概率：
 
 $$
 P(\omega_1)=0.008
 $$
+
 $$
 P(\omega_2)=0.992
 $$
+
 对于患病者，阳性检测概率：
 
 $$
 P(+\mid\omega_1)=0.98
 $$
+
 对于健康者，阴性检测概率：
 
 $$
 P(-\mid\omega_2)=0.97
 $$
+
 由互补概率得到：
 
 $$
 P(+\mid\omega_2)=1-0.97=0.03
 $$
+
 **③ 新概念拓展**
 
 这个例子也涉及医学统计中的两个术语：
@@ -1012,29 +1129,38 @@ $$
 $$
 P(\omega_1)=0.008,\quad P(\omega_2)=0.992
 $$
+
 $$
 P(+\mid\omega_1)=0.98,\quad P(+\mid\omega_2)=0.03
 $$
+
 根据贝叶斯公式：
 
 $$
-P(\omega_1\mid+)= \frac{P(\omega_1)P(+\mid\omega_1)} {P(\omega_1)P(+\mid\omega_1)+P(\omega_2)P(+\mid\omega_2)}
+P(\omega_1\mid+)=
+\frac{P(\omega_1)P(+\mid\omega_1)}
+{P(\omega_1)P(+\mid\omega_1)+P(\omega_2)P(+\mid\omega_2)}
 $$
+
 代入：
 
 $$
-=\frac{0.008\times0.98} {0.008\times0.98+0.992\times0.03}
+=\frac{0.008\times0.98}
+{0.008\times0.98+0.992\times0.03}
 $$
+
 得到：
 
 $$
 \boxed{P(\omega_1\mid+)=0.2085}
 $$
+
 因此：
 
 $$
 \boxed{P(\omega_2\mid+)=0.7915}
 $$
+
 课件的分类结论是未患癌症。
 
 **② 概念解释**
@@ -1061,31 +1187,37 @@ $$
 $$
 100000\times0.008=800
 $$
+
 其中真正检测阳性的人：
 
 $$
 800\times0.98=784
 $$
+
 未患病人数：
 
 $$
 100000-800=99200
 $$
+
 其中错误检测为阳性的人：
 
 $$
 99200\times0.03=2976
 $$
+
 因此总阳性人数为：
 
 $$
 784+2976=3760
 $$
+
 真正患病的人占所有阳性者的比例：
 
 $$
 \frac{784}{3760}\approx20.85\%
 $$
+
 这与贝叶斯公式完全一致。
 
 **注意**：课件的“未患癌症”是等错误代价下的概率分类结论，不表示医学上可以据此排除疾病。真实诊疗还需要进一步检查，且漏诊和误诊的代价并不相同。
@@ -1101,6 +1233,7 @@ $$
 $$
 P(\omega\mid x)=\frac{p(x\mid\omega)P(\omega)}{p(x)}
 $$
+
 需要知道：
 
 先验概率：
@@ -1108,11 +1241,13 @@ $$
 $$
 P(\omega)
 $$
+
 以及似然：
 
 $$
 p(x\mid\omega)
 $$
+
 问题是：我们怎样知道这些概率？
 
 课件给出两个方法：
@@ -1131,9 +1266,11 @@ $$
 $$
 P(\omega_1)=?
 $$
+
 $$
 p(x\mid\omega_1)=?
 $$
+
 怎样得到这些数值？
 
 最直接的方法就是收集大量样本，观察各个类别出现了多少次，以及各类样本的特征如何分布。
@@ -1159,30 +1296,37 @@ $$
 $$
 \omega_1:\text{价格}>50000
 $$
+
 $$
 \omega_2:\text{价格}\leq50000
 $$
+
 $$
 x:\text{汽车高度}
 $$
+
 比较：
 
 $$
 P(\omega_1\mid x)
 $$
+
 和：
 
 $$
 P(\omega_2\mid x)
 $$
+
 需要知道：
 
 $$
 P(\omega_1),\quad P(\omega_2)
 $$
+
 $$
 p(x\mid\omega_1),\quad p(x\mid\omega_2)
 $$
+
 这些数值可以根据收集到的样本，通过统计相对频率得到。
 
 **② 概念解释**
@@ -1206,6 +1350,7 @@ $$
 $$
 (\text{汽车高度},\text{汽车是否超过 5 万美元})
 $$
+
 前者是特征（Feature），后者是类别标签（Label）。
 
 我们希望利用带标签的历史数据，对新汽车做出预测。
@@ -1228,9 +1373,11 @@ $$
 $$
 P(\omega_1)=\frac{221}{1209}=0.183
 $$
+
 $$
 P(\omega_2)=\frac{988}{1209}=0.817
 $$
+
 **② 概念解释**
 
 这就是通过统计样本中的相对频率估计先验概率。
@@ -1240,6 +1387,7 @@ $$
 $$
 \boxed{P(\omega_i)\approx\frac{N_i}{N}}
 $$
+
 其中：
 
 $N$：样本总数量。
@@ -1251,6 +1399,7 @@ $N_i$：属于第 $i$ 类的样本数量。
 $$
 \frac{221}{1209}\approx18.3\%
 $$
+
 表示所收集的汽车中，价格超过 5 万美元的比例约为 18.3%。
 
 **③ 理解与拓展**
@@ -1272,6 +1421,7 @@ $$
 $$
 p(x\mid\omega_1),\quad p(x\mid\omega_2)
 $$
+
 方法：将汽车高度范围（例如 0.5–2.5 m）划分为 20 个区间，每个区间宽度为 0.1 m。
 
 然后分别统计每个类别中，落在相应区间的汽车数量。
@@ -1281,11 +1431,13 @@ $$
 $$
 x=1.05\text{ m}
 $$
+
 属于区间：
 
 $$
 I_x=[1.0,1.1]\text{ m}
 $$
+
 其中：
 
 超过 5 万美元的汽车有 46 辆落在该区间。
@@ -1297,9 +1449,11 @@ $$
 $$
 \frac{46}{221}=0.2081
 $$
+
 $$
 \frac{59}{988}=0.0597
 $$
+
 **② 概念解释**
 
 这里采用的是一种直方图（Histogram）统计方法。
@@ -1319,11 +1473,17 @@ $$
 真正的直方图密度估计还需要除以区间宽度：
 
 $$
-\hat p(1.05\mid\omega_1) =\frac{46}{221\times0.1} \approx2.081
+\hat p(1.05\mid\omega_1)
+=\frac{46}{221\times0.1}
+\approx2.081
 $$
+
 $$
-\hat p(1.05\mid\omega_2) =\frac{59}{988\times0.1} \approx0.597
+\hat p(1.05\mid\omega_2)
+=\frac{59}{988\times0.1}
+\approx0.597
 $$
+
 这里的密度数值大于 1 并不奇怪，因为概率密度本来就不必小于 1。
 
 不过，在下一页的分类比值中，两类使用了相同的区间宽度 0.1，因此公共因子会抵消，原课件的分类结果仍然成立。
@@ -1341,31 +1501,41 @@ $$
 $$
 P(\omega_1)=0.183,\quad P(\omega_2)=0.817
 $$
+
 $$
 \hat q_1=0.2081,\quad \hat q_2=0.0597
 $$
+
 其中 $\hat q_1,\hat q_2$ 是上一页对应区间的频率估计。
 
 课件计算：
 
 $$
-\frac{P(\omega_2\mid x)}{P(\omega_1\mid x)} = \frac{P(\omega_2)p(x\mid\omega_2)} {P(\omega_1)p(x\mid\omega_1)}
+\frac{P(\omega_2\mid x)}{P(\omega_1\mid x)}
+=\;
+\frac{P(\omega_2)p(x\mid\omega_2)}
+{P(\omega_1)p(x\mid\omega_1)}
 $$
+
 代入课件数值：
 
 $$
-=\frac{0.817\times0.0597} {0.183\times0.2081}
+=\frac{0.817\times0.0597}
+{0.183\times0.2081}
 $$
+
 得到：
 
 $$
 \boxed{\frac{P(\omega_2\mid x)}{P(\omega_1\mid x)}\approx1.280}
 $$
+
 因此：
 
 $$
 P(\omega_2\mid x)>P(\omega_1\mid x)
 $$
+
 结论：价格不超过 50,000 美元。
 
 **② 概念解释**
@@ -1379,6 +1549,7 @@ $$
 $$
 \frac{P(\omega_2\mid x)}{P(\omega_1\mid x)}>1
 $$
+
 则选择 $\omega_2$。
 
 若小于 1，则选择 $\omega_1$。
@@ -1390,9 +1561,11 @@ $$
 $$
 P(\omega_1\mid x)=\frac{1}{1+1.280}\approx0.439
 $$
+
 $$
 P(\omega_2\mid x)=\frac{1.280}{1+1.280}\approx0.561
 $$
+
 即价格不超过 5 万美元的后验概率约为 56.1%。
 
 所以这次判断虽然有优势，但并不特别确定。
@@ -1410,18 +1583,28 @@ $$
 $$
 P(\omega_1\mid x)>P(\omega_2\mid x)
 $$
+
 则选择 $\omega_1$，否则选择 $\omega_2$。
 
 观察到某个 $x$ 时，错误概率为：
 
 $$
-P(\text{error}\mid x)= \begin{cases} P(\omega_1\mid x),&\text{选择 }\omega_2\\ P(\omega_2\mid x),&\text{选择 }\omega_1 \end{cases}
+P(\text{error}\mid x)=
+\begin{cases}
+P(\omega_1\mid x),&\text{选择 }\omega_2\\
+P(\omega_2\mid x),&\text{选择 }\omega_1
+\end{cases}
 $$
+
 使用贝叶斯决策规则：
 
 $$
-\boxed{ P(\text{error}\mid x) =\min\{P(\omega_1\mid x),P(\omega_2\mid x)\} }
+\boxed{
+P(\text{error}\mid x)
+=\min\{P(\omega_1\mid x),P(\omega_2\mid x)\}
+}
 $$
+
 对于每个 $x$，错误概率都尽可能小。
 
 因此，对所有可能 $x$ 求平均后，整体错误概率也尽可能小。
@@ -1431,8 +1614,10 @@ $$
 假设：
 
 $$
-P(\omega_1\mid x)=0.8,\quad P(\omega_2\mid x)=0.2
+P(\omega_1\mid x)=0.8,\quad
+P(\omega_2\mid x)=0.2
 $$
+
 如果选择 $\omega_1$，错误概率为 0.2。
 
 如果选择 $\omega_2$，错误概率为 0.8。
@@ -1476,11 +1661,13 @@ $$
 $$
 x\in\mathbb R
 $$
+
 现在：
 
 $$
 \boxed{\mathbf{x}\in\mathbb R^d}
 $$
+
 其中 $\mathbb R^d$ 表示 $d$ 维欧氏空间。
 
 第二，允许超过两个自然状态：
@@ -1488,11 +1675,13 @@ $$
 $$
 \Omega=\{\omega_1,\omega_2,\ldots,\omega_c\}
 $$
+
 第三，允许采取的不仅仅是类别判断，还可以是其他行动：
 
 $$
 A=\{\alpha_1,\alpha_2,\ldots,\alpha_a\}
 $$
+
 课件特别指出：类别数量 $c$ 和行动数量 $a$ 不必相等。
 
 **② 概念解释**
@@ -1504,13 +1693,20 @@ $$
 $$
 x=12.5
 $$
+
 这是一个一维特征。
 
 如果同时考虑鱼的长度、宽度和亮度：
 
 $$
-\mathbf{x}= \begin{bmatrix} 30\\ 8\\ 12.5 \end{bmatrix}
+\mathbf{x}=
+\begin{bmatrix}
+30\\
+8\\
+12.5
+\end{bmatrix}
 $$
+
 这就是三维特征向量。
 
 这里：
@@ -1518,6 +1714,7 @@ $$
 $$
 d=3
 $$
+
 **自然状态与行动**
 
 自然状态是客观真实的类别。
@@ -1531,12 +1728,15 @@ $$
 $$
 \alpha_1=\text{方案A}
 $$
+
 $$
 \alpha_2=\text{方案B}
 $$
+
 $$
 \alpha_3=\text{不采取治疗}
 $$
+
 因此类别数量可能是 2，而行动数量是 3。
 
 ---
@@ -1550,6 +1750,7 @@ $$
 $$
 \lambda:\Omega\times A\rightarrow\mathbb R
 $$
+
 它描述：当真实状态为 $\omega_j$，却采取行动 $\alpha_i$ 时，产生多大的损失。
 
 课件通常写成：
@@ -1557,6 +1758,7 @@ $$
 $$
 \boxed{\lambda(\alpha_i\mid\omega_j)}
 $$
+
 课件给出下面的损失矩阵：
 
 | 真实状态 | 方案 A | 方案 B | 不治疗 |
@@ -1579,8 +1781,13 @@ $$
 我们可以将整个表写成矩阵：
 
 $$
-\Lambda= \begin{bmatrix} 5&50&10000\\ 60&3&0 \end{bmatrix}
+\Lambda=
+\begin{bmatrix}
+5&50&10000\\
+60&3&0
+\end{bmatrix}
 $$
+
 行对应真实类别，列对应行动。
 
 **③ 新概念：损失矩阵**
@@ -1604,6 +1811,7 @@ $$
 $$
 \alpha_i,\quad 1\leq i\leq a
 $$
+
 会产生多大损失。
 
 如果真实状态是 $\omega_j$，采取行动 $\alpha_i$，产生的损失为：
@@ -1611,6 +1819,7 @@ $$
 $$
 \lambda(\alpha_i\mid\omega_j)
 $$
+
 然而，真实状态是不确定的。
 
 因此需要计算期望损失（Expected Loss）。
@@ -1645,6 +1854,7 @@ $$
 $$
 0.8\times10+0.2\times100=28
 $$
+
 这就是期望损失的基本计算思路。
 
 ---
@@ -1658,18 +1868,27 @@ $$
 期望损失：
 
 $$
-\boxed{ R(\alpha_i\mid\mathbf{x}) = \sum_{j=1}^{c} \lambda(\alpha_i\mid\omega_j) P(\omega_j\mid\mathbf{x}) }
+\boxed{
+R(\alpha_i\mid\mathbf{x})
+=\;
+\sum_{j=1}^{c}
+\lambda(\alpha_i\mid\omega_j)
+P(\omega_j\mid\mathbf{x})
+}
 $$
+
 其中：
 
 $$
 \lambda(\alpha_i\mid\omega_j)
 $$
+
 表示真实状态为 $\omega_j$ 时，采取行动 $\alpha_i$ 的损失。
 
 $$
 P(\omega_j\mid\mathbf{x})
 $$
+
 表示给定观测 $\mathbf{x}$ 后，真实状态属于 $\omega_j$ 的概率。
 
 期望损失也称为**条件风险（Conditional Risk）**。
@@ -1681,8 +1900,14 @@ $$
 将公式拆开：
 
 $$
-\underbrace{R(\alpha_i\mid\mathbf{x})}_{\text{条件风险}} = \sum_j \underbrace{\lambda(\alpha_i\mid\omega_j)}_{\text{损失}} \cdot \underbrace{P(\omega_j\mid\mathbf{x})}_{\text{后验概率}}
+\underbrace{R(\alpha_i\mid\mathbf{x})}_{\text{条件风险}}
+=\;
+\sum_j
+\underbrace{\lambda(\alpha_i\mid\omega_j)}_{\text{损失}}
+\cdot
+\underbrace{P(\omega_j\mid\mathbf{x})}_{\text{后验概率}}
 $$
+
 含义就是：
 
 **把某个行动在各种真实情况下的损失，乘以相应情况出现的概率，然后全部相加。**
@@ -1692,8 +1917,14 @@ $$
 如果只有两个类别：
 
 $$
-\boxed{ R(\alpha_i\mid x)= \lambda(\alpha_i\mid\omega_1)P(\omega_1\mid x) + \lambda(\alpha_i\mid\omega_2)P(\omega_2\mid x) }
+\boxed{
+R(\alpha_i\mid x)=
+\lambda(\alpha_i\mid\omega_1)P(\omega_1\mid x)
++
+\lambda(\alpha_i\mid\omega_2)P(\omega_2\mid x)
+}
 $$
+
 后面的计算题基本上就是使用这个公式。
 
 ---
@@ -1709,35 +1940,46 @@ $$
 $$
 P(\omega_1\mid x)=0.01
 $$
+
 $$
 P(\omega_2\mid x)=0.99
 $$
+
 即患病后验概率为 1%，未患病后验概率为 99%。
 
 对于方案 A：
 
 $$
-R(\alpha_1\mid x) =5\times0.01+60\times0.99
+R(\alpha_1\mid x)
+=5\times0.01+60\times0.99
 $$
+
 $$
 \boxed{R(\alpha_1\mid x)=59.45}
 $$
+
 对于方案 B：
 
 $$
-R(\alpha_2\mid x) =50\times0.01+3\times0.99
+R(\alpha_2\mid x)
+=50\times0.01+3\times0.99
 $$
+
 $$
 \boxed{R(\alpha_2\mid x)=3.47}
 $$
+
 对于不治疗：
 
 $$
-R(\alpha_3\mid x) =10000\times0.01+0\times0.99
+R(\alpha_3\mid x)
+=10000\times0.01+0\times0.99
 $$
+
 $$
 \boxed{R(\alpha_3\mid x)=100}
 $$
+
 **② 概念解释**
 
 将三个行动放在一起：
@@ -1753,6 +1995,7 @@ $$
 $$
 \boxed{\alpha^*=\alpha_2}
 $$
+
 即选择方案 B，因为它的期望损失最小。
 
 **③ 理解与拓展**
@@ -1778,23 +2021,29 @@ $$
 $$
 \alpha:\mathbb R^d\rightarrow A
 $$
+
 也就是说，对每一个特征向量 $\mathbf{x}$，决策函数 $\alpha(\mathbf{x})$ 都输出一个行动。
 
 总体风险（Overall Risk）：
 
 $$
-\boxed{ R=\int R(\alpha(\mathbf{x})\mid\mathbf{x})p(\mathbf{x})\,d\mathbf{x} }
+\boxed{
+R=\int R(\alpha(\mathbf{x})\mid\mathbf{x})p(\mathbf{x})\,d\mathbf{x}
+}
 $$
+
 其中：
 
 $$
 R(\alpha(\mathbf{x})\mid\mathbf{x})
 $$
+
 是给定样本时，采取指定行动的条件风险。
 
 $$
 p(\mathbf{x})
 $$
+
 是样本特征的概率密度。
 
 **② 概念解释**
@@ -1820,6 +2069,7 @@ $$
 $$
 R=\sum_x R(\alpha(x)\mid x)P(x)
 $$
+
 ---
 
 ### 第 31 页｜一般贝叶斯决策规则
@@ -1831,23 +2081,38 @@ $$
 $$
 R=\int R(\alpha(\mathbf{x})\mid\mathbf{x})p(\mathbf{x})\,d\mathbf{x}
 $$
+
 如果对每一个 $\mathbf{x}$，都保证所选择行动的条件风险最小，那么总体风险也会最小。
 
 因此，一般贝叶斯决策规则为：
 
 $$
-\boxed{ \alpha^*(\mathbf{x})= \arg\min_{\alpha_i\in A} R(\alpha_i\mid\mathbf{x}) }
+\boxed{
+\alpha^*(\mathbf{x})=
+\arg\min_{\alpha_i\in A}
+R(\alpha_i\mid\mathbf{x})
+}
 $$
+
 代入条件风险公式：
 
 $$
-\boxed{ \alpha^*(\mathbf{x}) = \arg\min_{\alpha_i\in A} \sum_{j=1}^{c} \lambda(\alpha_i\mid\omega_j) P(\omega_j\mid\mathbf{x}) }
+\boxed{
+\alpha^*(\mathbf{x})
+=\;
+\arg\min_{\alpha_i\in A}
+\sum_{j=1}^{c}
+\lambda(\alpha_i\mid\omega_j)
+P(\omega_j\mid\mathbf{x})
+}
 $$
+
 最终得到的最小总体风险称为贝叶斯风险（Bayes Risk），记为：
 
 $$
 R^*
 $$
+
 它是在已知相关概率分布及损失函数的条件下，能够达到的最优性能。
 
 **② 概念解释**
@@ -1857,11 +2122,13 @@ $$
 $$
 \arg\min
 $$
+
 和前面学过的：
 
 $$
 \arg\max
 $$
+
 有什么不同？
 
 $\arg\max$：寻找使目标函数最大的输入。
@@ -1892,6 +2159,7 @@ $\arg\min$：寻找使目标函数最小的输入。
 $$
 \Omega=\{\omega_1,\omega_2\}
 $$
+
 表示两个自然状态。
 
 行动集合：
@@ -1899,34 +2167,47 @@ $$
 $$
 A=\{\alpha_1,\alpha_2\}
 $$
+
 其中：
 
 $$
 \alpha_1=\text{判为 }\omega_1
 $$
+
 $$
 \alpha_2=\text{判为 }\omega_2
 $$
+
 定义：
 
 $$
 \lambda_{ij}=\lambda(\alpha_i\mid\omega_j)
 $$
+
 表示真实类别是 $\omega_j$，却采取行动 $\alpha_i$ 时的损失。
 
 两个行动的条件风险分别为：
 
 $$
-R(\alpha_1\mid x) = \lambda_{11}P(\omega_1\mid x) +\lambda_{12}P(\omega_2\mid x)
+R(\alpha_1\mid x)
+=\;
+\lambda_{11}P(\omega_1\mid x)
++\lambda_{12}P(\omega_2\mid x)
 $$
+
 $$
-R(\alpha_2\mid x) = \lambda_{21}P(\omega_1\mid x) +\lambda_{22}P(\omega_2\mid x)
+R(\alpha_2\mid x)
+=\;
+\lambda_{21}P(\omega_1\mid x)
++\lambda_{22}P(\omega_2\mid x)
 $$
+
 如果：
 
 $$
 R(\alpha_1\mid x)<R(\alpha_2\mid x)
 $$
+
 则选择 $\omega_1$，否则选择 $\omega_2$。
 
 **② 概念解释**
@@ -1957,24 +2238,40 @@ $$
 $$
 R(\alpha_1\mid x)<R(\alpha_2\mid x)
 $$
+
 展开：
 
 $$
-\lambda_{11}P(\omega_1\mid x) +\lambda_{12}P(\omega_2\mid x)
+\lambda_{11}P(\omega_1\mid x)
++\lambda_{12}P(\omega_2\mid x)
 $$
+
 $$
-< \lambda_{21}P(\omega_1\mid x) +\lambda_{22}P(\omega_2\mid x)
+<
+\lambda_{21}P(\omega_1\mid x)
++\lambda_{22}P(\omega_2\mid x)
 $$
+
 整理：
 
 $$
-(\lambda_{21}-\lambda_{11})P(\omega_1\mid x) > (\lambda_{12}-\lambda_{22})P(\omega_2\mid x)
+(\lambda_{21}-\lambda_{11})P(\omega_1\mid x)
+>
+(\lambda_{12}-\lambda_{22})P(\omega_2\mid x)
 $$
+
 应用贝叶斯公式后得到：
 
 $$
-\boxed{ \frac{p(x\mid\omega_1)}{p(x\mid\omega_2)} > \frac{\lambda_{12}-\lambda_{22}} {\lambda_{21}-\lambda_{11}} \frac{P(\omega_2)}{P(\omega_1)} }
+\boxed{
+\frac{p(x\mid\omega_1)}{p(x\mid\omega_2)}
+>
+\frac{\lambda_{12}-\lambda_{22}}
+{\lambda_{21}-\lambda_{11}}
+\frac{P(\omega_2)}{P(\omega_1)}
+}
 $$
+
 课件将右侧定义为与 $x$ 无关的常数阈值 $\theta$。
 
 **② 概念解释**
@@ -1982,8 +2279,10 @@ $$
 左边：
 
 $$
-\Lambda(x)= \frac{p(x\mid\omega_1)}{p(x\mid\omega_2)}
+\Lambda(x)=
+\frac{p(x\mid\omega_1)}{p(x\mid\omega_2)}
 $$
+
 叫作**似然比（Likelihood Ratio）**。
 
 它衡量当前样本特征相对于 $\omega_2$，更支持 $\omega_1$ 的程度。
@@ -1991,15 +2290,22 @@ $$
 右边：
 
 $$
-\theta= \frac{\lambda_{12}-\lambda_{22}} {\lambda_{21}-\lambda_{11}} \frac{P(\omega_2)}{P(\omega_1)}
+\theta=
+\frac{\lambda_{12}-\lambda_{22}}
+{\lambda_{21}-\lambda_{11}}
+\frac{P(\omega_2)}{P(\omega_1)}
 $$
+
 叫作决策阈值。
 
 因此规则可以简化为：
 
 $$
-\boxed{ \Lambda(x)\mathop{\gtrless}_{\omega_2}^{\omega_1}\theta }
+\boxed{
+\Lambda(x)\mathop{\gtrless}_{\omega_2}^{\omega_1}\theta
+}
 $$
+
 也就是：
 
 似然比大于阈值，选择 $\omega_1$。
@@ -2032,16 +2338,25 @@ $$
 $$
 \Omega=\{\omega_1,\omega_2,\ldots,\omega_c\}
 $$
+
 $$
 A=\{\alpha_1,\alpha_2,\ldots,\alpha_c\}
 $$
+
 其中 $\alpha_i$ 表示选择类别 $\omega_i$。
 
 采用 0-1 损失函数（Zero-one Loss Function）：
 
 $$
-\boxed{ \lambda(\alpha_i\mid\omega_j)= \begin{cases} 0,&i=j\\ 1,&i\neq j \end{cases} }
+\boxed{
+\lambda(\alpha_i\mid\omega_j)=
+\begin{cases}
+0,&i=j\\
+1,&i\neq j
+\end{cases}
+}
 $$
+
 正确决策的损失为 0。
 
 任何错误决策的损失为 1，错误代价相等。
@@ -2080,30 +2395,43 @@ $$
 条件风险：
 
 $$
-R(\alpha_i\mid x)= \sum_{j=1}^{c} \lambda(\alpha_i\mid\omega_j)P(\omega_j\mid x)
+R(\alpha_i\mid x)=
+\sum_{j=1}^{c}
+\lambda(\alpha_i\mid\omega_j)P(\omega_j\mid x)
 $$
+
 对于 0-1 损失：
 
 $$
 =\sum_{j\neq i}P(\omega_j\mid x)
 $$
+
 因为全部后验概率之和为 1：
 
 $$
 \sum_{j=1}^{c}P(\omega_j\mid x)=1
 $$
+
 所以：
 
 $$
-\boxed{ R(\alpha_i\mid x)=1-P(\omega_i\mid x) }
+\boxed{
+R(\alpha_i\mid x)=1-P(\omega_i\mid x)
+}
 $$
+
 即采取行动 $\alpha_i$ 时的分类错误概率。
 
 因此，最小错误率决策规则为：
 
 $$
-\boxed{ \text{选择 }\omega_i \quad\text{当}\quad P(\omega_i\mid x)>P(\omega_j\mid x),\ \forall j\neq i }
+\boxed{
+\text{选择 }\omega_i
+\quad\text{当}\quad
+P(\omega_i\mid x)>P(\omega_j\mid x),\ \forall j\neq i
+}
 $$
+
 **② 逐步理解**
 
 我们希望：
@@ -2111,18 +2439,25 @@ $$
 $$
 \min_i R(\alpha_i\mid x)
 $$
+
 代入：
 
 $$
 =\min_i[1-P(\omega_i\mid x)]
 $$
+
 由于 1 是常数，要让整个表达式最小，就必须让后验概率最大。
 
 所以：
 
 $$
-\boxed{ \arg\min_i[1-P(\omega_i\mid x)] = \arg\max_i P(\omega_i\mid x) }
+\boxed{
+\arg\min_i[1-P(\omega_i\mid x)]
+=\;
+\arg\max_i P(\omega_i\mid x)
+}
 $$
+
 这就从一般贝叶斯最小风险决策，推导出了前面介绍的最大后验概率分类规则。
 
 **③ 本部分最重要的结论**
@@ -2146,6 +2481,7 @@ $$
 $$
 \Omega=\{\omega_1,\omega_2,\ldots,\omega_c\}
 $$
+
 是固定的。
 
 但是在某些情况下，需要设计能够在先验概率变化时仍然表现良好的分类器。
@@ -2171,8 +2507,11 @@ $$
 用数学语言表示：
 
 $$
-\boxed{ \min_{\alpha}\max_{P(\omega)}R(\alpha,P(\omega)) }
+\boxed{
+\min_{\alpha}\max_{P(\omega)}R(\alpha,P(\omega))
+}
 $$
+
 意思是：
 
 对一个给定分类器，先找最不利的先验概率分布，再选择使这种最坏风险尽可能小的分类器。
@@ -2206,17 +2545,21 @@ $$
 $$
 \Omega=\{\omega_1,\omega_2\}
 $$
+
 $$
 A=\{\alpha_1,\alpha_2\}
 $$
+
 其中：
 
 $$
 \alpha_1=\text{判为 }\omega_1
 $$
+
 $$
 \alpha_2=\text{判为 }\omega_2
 $$
+
 假设分类器在区域 $R_1$ 内选择 $\omega_1$，在区域 $R_2$ 内选择 $\omega_2$。
 
 这两个区域满足：
@@ -2224,19 +2567,28 @@ $$
 $$
 R_1\cup R_2=\mathbb R^d
 $$
+
 $$
 R_1\cap R_2=\varnothing
 $$
+
 总体风险为：
 
 $$
 R=\int R(\alpha(x)\mid x)p(x)\,dx
 $$
+
 可分解为：
 
 $$
-\boxed{ R= \int_{R_1}R(\alpha_1\mid x)p(x)\,dx + \int_{R_2}R(\alpha_2\mid x)p(x)\,dx }
+\boxed{
+R=
+\int_{R_1}R(\alpha_1\mid x)p(x)\,dx
++
+\int_{R_2}R(\alpha_2\mid x)p(x)\,dx
+}
 $$
+
 **② 概念解释**
 
 这里出现两个重要概念。
@@ -2248,17 +2600,21 @@ $$
 $$
 x>12\Rightarrow \omega_1
 $$
+
 $$
 x\leq12\Rightarrow \omega_2
 $$
+
 则：
 
 $$
 R_1=(12,+\infty)
 $$
+
 $$
 R_2=(-\infty,12]
 $$
+
 注意，两个区域划分了全部特征空间。
 
 **③ 为什么要拆成两个积分？**
@@ -2280,33 +2636,56 @@ $$
 由上页：
 
 $$
-R= \int_{R_1}R(\alpha_1\mid x)p(x)\,dx + \int_{R_2}R(\alpha_2\mid x)p(x)\,dx
+R=
+\int_{R_1}R(\alpha_1\mid x)p(x)\,dx
++
+\int_{R_2}R(\alpha_2\mid x)p(x)\,dx
 $$
+
 对第一项：
 
 $$
 \int_{R_1}R(\alpha_1\mid x)p(x)\,dx
 $$
+
 代入条件风险定义：
 
 $$
-=\int_{R_1}\sum_{j=1}^{2} \lambda_{1j}P(\omega_j\mid x)p(x)\,dx
+=\int_{R_1}\sum_{j=1}^{2}
+\lambda_{1j}P(\omega_j\mid x)p(x)\,dx
 $$
+
 根据贝叶斯公式：
 
 $$
-P(\omega_j\mid x)p(x) = p(x\mid\omega_j)P(\omega_j)
+P(\omega_j\mid x)p(x)
+=\;
+p(x\mid\omega_j)P(\omega_j)
 $$
+
 于是：
 
 $$
-= \int_{R_1} [ \lambda_{11}P(\omega_1)p(x\mid\omega_1) + \lambda_{12}P(\omega_2)p(x\mid\omega_2) ] \,dx
+=\;
+\int_{R_1}
+[
+\lambda_{11}P(\omega_1)p(x\mid\omega_1)
++
+\lambda_{12}P(\omega_2)p(x\mid\omega_2)
+] \,dx
 $$
+
 类似地，第二项为：
 
 $$
-\int_{R_2} [ \lambda_{21}P(\omega_1)p(x\mid\omega_1) + \lambda_{22}P(\omega_2)p(x\mid\omega_2) ] \,dx
+\int_{R_2}
+[
+\lambda_{21}P(\omega_1)p(x\mid\omega_1)
++
+\lambda_{22}P(\omega_2)p(x\mid\omega_2)
+] \,dx
 $$
+
 **② 概念解释**
 
 这一页没有引入新的概率概念，主要是在进行**公式代换**。
@@ -2314,8 +2693,13 @@ $$
 最关键的代换是：
 
 $$
-\boxed{ P(\omega_j\mid x)p(x) = P(\omega_j)p(x\mid\omega_j) }
+\boxed{
+P(\omega_j\mid x)p(x)
+=\;
+P(\omega_j)p(x\mid\omega_j)
+}
 $$
+
 为什么要这样变换？
 
 因为我们现在希望研究的是：当先验概率 $P(\omega_j)$ 变化时，总体风险 $R$ 会如何变化。
@@ -2331,23 +2715,49 @@ $$
 继续整理：
 
 $$
-\begin{aligned} R={}& \int_{R_1} [\lambda_{11}P(\omega_1)p(x\mid\omega_1)\\ &+\lambda_{12}P(\omega_2)p(x\mid\omega_2)]\,dx\\ &+ \int_{R_2} [\lambda_{21}P(\omega_1)p(x\mid\omega_1)\\ &+\lambda_{22}P(\omega_2)p(x\mid\omega_2)]\,dx \end{aligned}
+\begin{aligned}
+R={}&
+\int_{R_1}
+[\lambda_{11}P(\omega_1)p(x\mid\omega_1)\\
+&+\lambda_{12}P(\omega_2)p(x\mid\omega_2)]\,dx\\
+&+
+\int_{R_2}
+[\lambda_{21}P(\omega_1)p(x\mid\omega_1)\\
+&+\lambda_{22}P(\omega_2)p(x\mid\omega_2)]\,dx
+\end{aligned}
 $$
+
 利用：
 
 $$
 P(\omega_1)=1-P(\omega_2)
 $$
+
 以及：
 
 $$
-\int_{R_1}p(x\mid\omega_j)\,dx = 1-\int_{R_2}p(x\mid\omega_j)\,dx
+\int_{R_1}p(x\mid\omega_j)\,dx
+=\;
+1-\int_{R_2}p(x\mid\omega_j)\,dx
 $$
+
 可以把总体风险整理成：
 
 $$
-\begin{aligned} R={}&\lambda_{22} +(\lambda_{12}-\lambda_{22}) \int_{R_1}p(x\mid\omega_2)\,dx\\ &+P(\omega_1)\Bigg[ (\lambda_{11}-\lambda_{22})\\ &\quad+(\lambda_{21}-\lambda_{11}) \int_{R_2}p(x\mid\omega_1)\,dx\\ &\quad-(\lambda_{12}-\lambda_{22}) \int_{R_1}p(x\mid\omega_2)\,dx \Bigg] \end{aligned}
+\begin{aligned}
+R={}&\lambda_{22}
++(\lambda_{12}-\lambda_{22})
+\int_{R_1}p(x\mid\omega_2)\,dx\\
+&+P(\omega_1)\Bigg[
+(\lambda_{11}-\lambda_{22})\\
+&\quad+(\lambda_{21}-\lambda_{11})
+\int_{R_2}p(x\mid\omega_1)\,dx\\
+&\quad-(\lambda_{12}-\lambda_{22})
+\int_{R_1}p(x\mid\omega_2)\,dx
+\Bigg]
+\end{aligned}
 $$
+
 **② 概念解释**
 
 这个公式很长，但核心结构很简单：
@@ -2355,6 +2765,7 @@ $$
 $$
 \boxed{R=A+B\cdot P(\omega_1)}
 $$
+
 这里 $A$ 和 $B$ 在决策区域固定、类条件分布及损失函数固定时，都是常数。
 
 因此总体风险可以写成先验概率的**一次函数**。
@@ -2364,6 +2775,7 @@ $$
 $$
 y=a+bx
 $$
+
 你在中学学过这种函数。
 
 这里：
@@ -2371,6 +2783,7 @@ $$
 $$
 y=R,\qquad x=P(\omega_1)
 $$
+
 所以，当分类器固定时，风险随先验概率变化形成一条直线。
 
 **③ 为什么重要？**
@@ -2388,6 +2801,7 @@ $$
 $$
 R=A+B P(\omega_1)
 $$
+
 的形式。
 
 对于其讨论的极小化极大解，要求关于先验概率的线性项系数为 0。
@@ -2395,23 +2809,43 @@ $$
 即：
 
 $$
-\begin{aligned} 0={}&(\lambda_{11}-\lambda_{22})\\ &+(\lambda_{21}-\lambda_{11}) \int_{R_2}p(x\mid\omega_1)\,dx\\ &-(\lambda_{12}-\lambda_{22}) \int_{R_1}p(x\mid\omega_2)\,dx \end{aligned}
+\begin{aligned}
+0={}&(\lambda_{11}-\lambda_{22})\\
+&+(\lambda_{21}-\lambda_{11})
+\int_{R_2}p(x\mid\omega_1)\,dx\\
+&-(\lambda_{12}-\lambda_{22})
+\int_{R_1}p(x\mid\omega_2)\,dx
+\end{aligned}
 $$
+
 对应的极小化极大风险记为：
 
 $$
 \boxed{R_{mm}}
 $$
+
 课件给出两个等价表达：
 
 $$
-R_{mm} = \lambda_{22} + (\lambda_{12}-\lambda_{22}) \int_{R_1}p(x\mid\omega_2)\,dx
+R_{mm}
+=\;
+\lambda_{22}
++
+(\lambda_{12}-\lambda_{22})
+\int_{R_1}p(x\mid\omega_2)\,dx
 $$
+
 以及：
 
 $$
-R_{mm} = \lambda_{11} + (\lambda_{21}-\lambda_{11}) \int_{R_2}p(x\mid\omega_1)\,dx
+R_{mm}
+=\;
+\lambda_{11}
++
+(\lambda_{21}-\lambda_{11})
+\int_{R_2}p(x\mid\omega_1)\,dx
 $$
+
 课件强调，风险也可以类似地写成先验概率 $P(\omega_2)$ 的线性函数。
 
 **② 概念解释**
@@ -2421,11 +2855,13 @@ $$
 $$
 B=0
 $$
+
 因为如果：
 
 $$
 R=A+B P(\omega_1)
 $$
+
 当 $B\neq0$ 时，风险就会随着先验概率变化。
 
 当：
@@ -2433,11 +2869,13 @@ $$
 $$
 B=0
 $$
+
 则：
 
 $$
 R=A
 $$
+
 风险不再受到先验概率变化的影响。
 
 对于课件讨论的等风险构造，这样可以让最不利先验分布不再产生额外的风险变化。
@@ -2476,11 +2914,13 @@ Pattern → Category（模式 → 类别）。
 $$
 \boxed{g_i:\mathbb R^d\rightarrow\mathbb R}
 $$
+
 其中：
 
 $$
 1\leq i\leq c
 $$
+
 判别函数是一种表示分类器的有效方式。
 
 每个类别对应一个判别函数。
@@ -2490,6 +2930,7 @@ $$
 $$
 g_i(\mathbf{x})>g_j(\mathbf{x}),\quad\forall j\neq i
 $$
+
 则判定样本属于类别 $\omega_i$。
 
 **② 概念解释**
@@ -2505,12 +2946,15 @@ $$
 $$
 g_1(\mathbf{x})=2.3
 $$
+
 $$
 g_2(\mathbf{x})=4.5
 $$
+
 $$
 g_3(\mathbf{x})=1.8
 $$
+
 其中：
 
 $g_1$ 对应猫。
@@ -2524,6 +2968,7 @@ $g_3$ 对应兔子。
 $$
 g_2(\mathbf{x})=\max\{2.3,4.5,1.8\}
 $$
+
 所以最终判断为狗。
 
 **③ 与神经网络分类器的联系**
@@ -2533,6 +2978,7 @@ $$
 $$
 \mathbf{z}=[z_1,z_2,\ldots,z_c]
 $$
+
 这些分数称为 Logits，可以起到判别函数值的作用。
 
 例如：
@@ -2540,6 +2986,7 @@ $$
 $$
 \mathbf{z}=[1.2,3.5,0.8]
 $$
+
 直接选择分数最大的类别即可。
 
 后续还可以通过 Softmax 函数把这些分数转化成归一化的概率形式。
@@ -2557,11 +3004,13 @@ $$
 $$
 \boxed{g_i(\mathbf{x})=-R(\alpha_i\mid\mathbf{x})}
 $$
+
 对于最小错误率分类，可以选择：
 
 $$
 \boxed{g_i(\mathbf{x})=P(\omega_i\mid\mathbf{x})}
 $$
+
 不同形式的判别函数可以产生完全相同的分类结果。
 
 如果 $f(\cdot)$ 是单调递增函数，那么对所有类别同时应用：
@@ -2569,6 +3018,7 @@ $$
 $$
 f(g_i(\mathbf{x}))
 $$
+
 不会改变各类别的大小顺序。
 
 例如：
@@ -2576,11 +3026,13 @@ $$
 $$
 f(x)=kx,\qquad k>0
 $$
+
 或者：
 
 $$
 f(x)=\ln x
 $$
+
 其中对数变换要求输入大于零。
 
 **② 概念解释**
@@ -2590,11 +3042,13 @@ $$
 $$
 g_1(x)=0.8,\quad g_2(x)=0.2
 $$
+
 由于：
 
 $$
 0.8>0.2
 $$
+
 所以选择第一类。
 
 如果同时取自然对数：
@@ -2602,14 +3056,17 @@ $$
 $$
 \ln0.8\approx-0.223
 $$
+
 $$
 \ln0.2\approx-1.609
 $$
+
 仍然满足：
 
 $$
 \ln0.8>\ln0.2
 $$
+
 因此分类结果不变。
 
 **③ 为什么要使用对数？**
@@ -2621,16 +3078,19 @@ $$
 $$
 \boxed{\ln(ab)=\ln a+\ln b}
 $$
+
 例如贝叶斯公式中的：
 
 $$
 p(x\mid\omega_i)P(\omega_i)
 $$
+
 取对数后：
 
 $$
 \ln p(x\mid\omega_i)+\ln P(\omega_i)
 $$
+
 第二，能够缓解大量很小的概率相乘时出现的数值下溢问题。
 
 在机器学习和概率模型中，使用对数似然（Log-Likelihood）是非常常见的做法。
@@ -2648,8 +3108,13 @@ $$
 第 $i$ 类的决策区域：
 
 $$
-\boxed{ R_i= \{\mathbf{x}\in\mathbb R^d: g_i(\mathbf{x})>g_j(\mathbf{x}),\ \forall j\neq i\} }
+\boxed{
+R_i=
+\{\mathbf{x}\in\mathbb R^d:
+g_i(\mathbf{x})>g_j(\mathbf{x}),\ \forall j\neq i\}
+}
 $$
+
 不同类别的区域不应发生内部重叠，所有区域连同决策边界覆盖整个特征空间。
 
 决策边界（Decision Boundary）：
@@ -2661,8 +3126,13 @@ $$
 假设我们使用两个特征描述鱼：
 
 $$
-\mathbf{x}= \begin{bmatrix} \text{长度}\\ \text{亮度} \end{bmatrix}
+\mathbf{x}=
+\begin{bmatrix}
+\text{长度}\\
+\text{亮度}
+\end{bmatrix}
 $$
+
 每一条鱼都对应二维坐标系中的一个点。
 
 分类器需要把整个坐标平面划分成不同区域。
@@ -2676,24 +3146,29 @@ $$
 $$
 g_1(x)=2x+1
 $$
+
 $$
 g_2(x)=5
 $$
+
 决策边界满足：
 
 $$
 g_1(x)=g_2(x)
 $$
+
 即：
 
 $$
 2x+1=5
 $$
+
 得到：
 
 $$
 \boxed{x=2}
 $$
+
 因此：
 
 当 $x>2$ 时，选择第一类。
@@ -2729,18 +3204,25 @@ Expectation（期望）、Mean（均值）或 Average（平均值）。
 对于离散随机变量：
 
 $$
-\boxed{ E[X]=\sum_{i=1}^{c}x_iP(x_i) }
+\boxed{
+E[X]=\sum_{i=1}^{c}x_iP(x_i)
+}
 $$
+
 对于连续随机变量：
 
 $$
-\boxed{ E[X]=\int_{-\infty}^{+\infty}xp(x)\,dx }
+\boxed{
+E[X]=\int_{-\infty}^{+\infty}xp(x)\,dx
+}
 $$
+
 通常记为：
 
 $$
 \mu=E[X]
 $$
+
 **② 概念解释**
 
 数学期望可以理解成按照概率进行加权平均。
@@ -2758,9 +3240,11 @@ $$
 $$
 E[X]=10\times0.2+20\times0.3+30\times0.5
 $$
+
 $$
 \boxed{E[X]=23}
 $$
+
 这里的 23 不一定是随机变量实际能够取到的值，它表示概率意义下的平均水平。
 
 **③ 离散和连续有什么区别？**
@@ -2770,11 +3254,13 @@ $$
 $$
 \sum
 $$
+
 连续情况使用积分：
 
 $$
 \int
 $$
+
 它们的思想都是按照概率权重计算平均值。
 
 ---
@@ -2790,41 +3276,53 @@ $$
 $$
 E[f(X)]=\sum_{i=1}^{c}f(x_i)P(x_i)
 $$
+
 连续情况：
 
 $$
 E[f(X)]=\int_{-\infty}^{+\infty}f(x)p(x)\,dx
 $$
+
 方差（Variance）定义：
 
 $$
-\boxed{ \operatorname{Var}(X)=E[(X-E[X])^2] }
+\boxed{
+\operatorname{Var}(X)=E[(X-E[X])^2]
+}
 $$
+
 记：
 
 $$
 \mu=E[X]
 $$
+
 则：
 
 $$
 \operatorname{Var}(X)=E[(X-\mu)^2]
 $$
+
 离散情况：
 
 $$
-\operatorname{Var}(X) =\sum_{i=1}^{c}(x_i-\mu)^2P(x_i)
+\operatorname{Var}(X)
+=\sum_{i=1}^{c}(x_i-\mu)^2P(x_i)
 $$
+
 连续情况：
 
 $$
-\operatorname{Var}(X) =\int_{-\infty}^{+\infty}(x-\mu)^2p(x)\,dx
+\operatorname{Var}(X)
+=\int_{-\infty}^{+\infty}(x-\mu)^2p(x)\,dx
 $$
+
 记号：
 
 $$
 \boxed{\sigma^2=\operatorname{Var}(X)}
 $$
+
 其中 $\sigma$ 是标准差（Standard Deviation）。
 
 **② 概念解释**
@@ -2838,14 +3336,17 @@ $$
 $$
 A=[9,10,11]
 $$
+
 $$
 B=[0,10,20]
 $$
+
 两组均值都是：
 
 $$
 \mu=10
 $$
+
 但是 A 中的数据都接近 10，而 B 的数据相差很大。
 
 因此 B 的方差更大。
@@ -2853,19 +3354,25 @@ $$
 假设三种取值等概率，A 的方差：
 
 $$
-\operatorname{Var}(A) =\frac{(9-10)^2+(10-10)^2+(11-10)^2}{3}
+\operatorname{Var}(A)
+=\frac{(9-10)^2+(10-10)^2+(11-10)^2}{3}
 $$
+
 $$
 =\frac23\approx0.667
 $$
+
 B 的方差：
 
 $$
-\operatorname{Var}(B) =\frac{(0-10)^2+(10-10)^2+(20-10)^2}{3}
+\operatorname{Var}(B)
+=\frac{(0-10)^2+(10-10)^2+(20-10)^2}{3}
 $$
+
 $$
 =\frac{200}{3}\approx66.667
 $$
+
 **③ 为什么使用平方？**
 
 因为简单地计算偏差之和：
@@ -2873,6 +3380,7 @@ $$
 $$
 \sum_i(x_i-\mu)
 $$
+
 正负偏差会互相抵消。
 
 通过平方：
@@ -2880,6 +3388,7 @@ $$
 $$
 (x_i-\mu)^2
 $$
+
 就能避免这种抵消，同时让偏差更大的样本产生更大的贡献。
 
 ---
@@ -2893,24 +3402,32 @@ $$
 标准的一维正态概率密度公式：
 
 $$
-\boxed{ p(x)=\frac{1}{\sqrt{2\pi}\sigma} \exp\left[-\frac12\left(\frac{x-\mu}{\sigma}\right)^2\right] }
+\boxed{
+p(x)=\frac{1}{\sqrt{2\pi}\sigma}
+\exp\left[-\frac12\left(\frac{x-\mu}{\sigma}\right)^2\right]
+}
 $$
+
 记为：
 
 $$
 \boxed{X\sim N(\mu,\sigma^2)}
 $$
+
 其中：
 
 $$
 \int_{-\infty}^{+\infty}p(x)\,dx=1
 $$
+
 $$
 E[X]=\mu
 $$
+
 $$
 \operatorname{Var}(X)=\sigma^2
 $$
+
 **② 概念解释**
 
 正态分布就是我们经常看到的钟形曲线。
@@ -2934,6 +3451,7 @@ $\exp(z)$：指数函数，等价于 $e^z$。
 $$
 \exp(-2)=e^{-2}
 $$
+
 其中 $e\approx2.71828$。
 
 **③ 正态分布的直观规律**
@@ -2943,12 +3461,15 @@ $$
 $$
 P(\mu-\sigma\leq X\leq\mu+\sigma)\approx68.3\%
 $$
+
 $$
 P(\mu-2\sigma\leq X\leq\mu+2\sigma)\approx95.4\%
 $$
+
 $$
 P(\mu-3\sigma\leq X\leq\mu+3\sigma)\approx99.7\%
 $$
+
 因此，距离均值越远，观测值通常越不容易出现。
 
 **④ 原课件的公式注意事项**
@@ -2958,11 +3479,13 @@ $$
 $$
 \frac{1}{\sqrt{2\pi\sigma}}
 $$
+
 这不是标准正态密度公式。正确形式应该是：
 
 $$
 \boxed{\frac{1}{\sqrt{2\pi}\sigma}}
 $$
+
 并且这里要求 $\sigma>0$。学习和考试时应以正确的标准公式为准。
 
 ---
@@ -2974,13 +3497,21 @@ $$
 把一组随机变量组合成向量：
 
 $$
-\mathbf{x}= \begin{bmatrix} x_1\\ x_2\\ \vdots\\ x_d \end{bmatrix}
+\mathbf{x}=
+\begin{bmatrix}
+x_1\\
+x_2\\
+\vdots\\
+x_d
+\end{bmatrix}
 $$
+
 联合概率密度：
 
 $$
 p(\mathbf{x})=p(x_1,x_2,\ldots,x_d)
 $$
+
 边缘概率密度可以通过对其他变量积分得到。
 
 例如二维情况：
@@ -2988,26 +3519,39 @@ $$
 $$
 p(x_1)=\int_{-\infty}^{+\infty}p(x_1,x_2)\,dx_2
 $$
+
 期望向量：
 
 $$
-\boxed{ E[\mathbf{x}]= \begin{bmatrix} E[x_1]\\ E[x_2]\\ \vdots\\ E[x_d] \end{bmatrix} }
+\boxed{
+E[\mathbf{x}]=
+\begin{bmatrix}
+E[x_1]\\
+E[x_2]\\
+\vdots\\
+E[x_d]
+\end{bmatrix}
+}
 $$
+
 其中：
 
 $$
 E[x_i]=\int_{-\infty}^{+\infty}x_ip(x_i)\,dx_i
 $$
+
 记：
 
 $$
 \boldsymbol{\mu}=E[\mathbf{x}]
 $$
+
 以及：
 
 $$
 \mu_i=E[x_i]
 $$
+
 **② 概念解释**
 
 之前我们研究的是一个变量，例如鱼的亮度。
@@ -3015,8 +3559,14 @@ $$
 现在一个样本有多个特征：
 
 $$
-\mathbf{x}= \begin{bmatrix} \text{长度}\\ \text{重量}\\ \text{亮度} \end{bmatrix}
+\mathbf{x}=
+\begin{bmatrix}
+\text{长度}\\
+\text{重量}\\
+\text{亮度}
+\end{bmatrix}
 $$
+
 因此，每个样本都可以表示为一个向量。
 
 相应地，均值也不再是一个数字，而是一个向量。
@@ -3024,8 +3574,14 @@ $$
 例如：
 
 $$
-\boldsymbol{\mu}= \begin{bmatrix} 30\\ 2.5\\ 12 \end{bmatrix}
+\boldsymbol{\mu}=
+\begin{bmatrix}
+30\\
+2.5\\
+12
+\end{bmatrix}
 $$
+
 表示三个特征各自的平均值。
 
 **③ 理解与拓展**
@@ -3049,28 +3605,46 @@ $$
 协方差矩阵：
 
 $$
-\boxed{ \Sigma=[\sigma_{ij}]_{1\leq i,j\leq d} }
+\boxed{
+\Sigma=[\sigma_{ij}]_{1\leq i,j\leq d}
+}
 $$
+
 展开：
 
 $$
-\Sigma= \begin{bmatrix} \sigma_{11}&\sigma_{12}&\cdots&\sigma_{1d}\\ \sigma_{21}&\sigma_{22}&\cdots&\sigma_{2d}\\ \vdots&\vdots&\ddots&\vdots\\ \sigma_{d1}&\sigma_{d2}&\cdots&\sigma_{dd} \end{bmatrix}
+\Sigma=
+\begin{bmatrix}
+\sigma_{11}&\sigma_{12}&\cdots&\sigma_{1d}\\
+\sigma_{21}&\sigma_{22}&\cdots&\sigma_{2d}\\
+\vdots&\vdots&\ddots&\vdots\\
+\sigma_{d1}&\sigma_{d2}&\cdots&\sigma_{dd}
+\end{bmatrix}
 $$
+
 其中：
 
 $$
-\boxed{ \sigma_{ij}=E[(x_i-\mu_i)(x_j-\mu_j)] }
+\boxed{
+\sigma_{ij}=E[(x_i-\mu_i)(x_j-\mu_j)]
+}
 $$
+
 等价于：
 
 $$
-\sigma_{ij}= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} (x_i-\mu_i)(x_j-\mu_j)p(x_i,x_j)\,dx_i\,dx_j
+\sigma_{ij}=
+\int_{-\infty}^{+\infty}
+\int_{-\infty}^{+\infty}
+(x_i-\mu_i)(x_j-\mu_j)p(x_i,x_j)\,dx_i\,dx_j
 $$
+
 对角线元素：
 
 $$
 \sigma_{ii}=\operatorname{Var}(x_i)=\sigma_i^2
 $$
+
 协方差矩阵具有两个性质：
 
 1. 对称性（Symmetric）。
@@ -3097,8 +3671,13 @@ $$
 对于两个特征：
 
 $$
-\Sigma= \begin{bmatrix} \sigma_1^2&\sigma_{12}\\ \sigma_{12}&\sigma_2^2 \end{bmatrix}
+\Sigma=
+\begin{bmatrix}
+\sigma_1^2&\sigma_{12}\\
+\sigma_{12}&\sigma_2^2
+\end{bmatrix}
 $$
+
 其中：
 
 左上角表示第一个特征的方差。
@@ -3112,20 +3691,27 @@ $$
 因为：
 
 $$
-(x_i-\mu_i)(x_j-\mu_j) = (x_j-\mu_j)(x_i-\mu_i)
+(x_i-\mu_i)(x_j-\mu_j)
+=\;
+(x_j-\mu_j)(x_i-\mu_i)
 $$
+
 所以：
 
 $$
 \boxed{\sigma_{ij}=\sigma_{ji}}
 $$
+
 为什么半正定？
 
 因为对任意向量 $\mathbf{a}$：
 
 $$
-\mathbf{a}^T\Sigma\mathbf{a} = \operatorname{Var}(\mathbf{a}^T\mathbf{x})\geq0
+\mathbf{a}^T\Sigma\mathbf{a}
+=\;
+\operatorname{Var}(\mathbf{a}^T\mathbf{x})\geq0
 $$
+
 而方差不可能为负。
 
 ---
@@ -3139,36 +3725,51 @@ $$
 $$
 \boxed{\mathbf{x}\sim N(\boldsymbol{\mu},\Sigma)}
 $$
+
 多维高斯概率密度函数：
 
 $$
-\boxed{ p(\mathbf{x})= \frac{1}{(2\pi)^{d/2}|\Sigma|^{1/2}} \exp\left[ -\frac12(\mathbf{x}-\boldsymbol{\mu})^T \Sigma^{-1} (\mathbf{x}-\boldsymbol{\mu}) \right] }
+\boxed{
+p(\mathbf{x})=
+\frac{1}{(2\pi)^{d/2}|\Sigma|^{1/2}}
+\exp\left[
+-\frac12(\mathbf{x}-\boldsymbol{\mu})^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu})
+\right]
+}
 $$
+
 其中：
 
 $$
 \mathbf{x}=(x_1,x_2,\ldots,x_d)^T
 $$
+
 表示 $d$ 维列向量。
 
 $$
 \boldsymbol{\mu}=(\mu_1,\mu_2,\ldots,\mu_d)^T
 $$
+
 表示均值向量。
 
 $$
 \Sigma
 $$
+
 表示 $d\times d$ 维协方差矩阵。
 
 $$
 |\Sigma|
 $$
+
 表示矩阵行列式（Determinant）。
 
 $$
 \Sigma^{-1}
 $$
+
 表示矩阵的逆（Inverse）。
 
 **② 概念解释**
@@ -3176,8 +3777,11 @@ $$
 先看公式中最重要的一项：
 
 $$
-(\mathbf{x}-\boldsymbol{\mu})^T \Sigma^{-1} (\mathbf{x}-\boldsymbol{\mu})
+(\mathbf{x}-\boldsymbol{\mu})^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu})
 $$
+
 它用于衡量样本与均值之间的距离，但不是简单的欧氏距离。
 
 为什么需要协方差矩阵？
@@ -3199,18 +3803,32 @@ $$
 转置 $T$ 表示把行和列互换：
 
 $$
-\begin{bmatrix} 1\\2 \end{bmatrix}^{T} = \begin{bmatrix} 1&2 \end{bmatrix}
+\begin{bmatrix}
+1\\2
+\end{bmatrix}^{T}
+=\;
+\begin{bmatrix}
+1&2
+\end{bmatrix}
 $$
+
 二维矩阵的行列式：
 
 $$
-\left| \begin{matrix} a&b\\c&d \end{matrix} \right| =ad-bc
+\left|
+\begin{matrix}
+a&b\\c&d
+\end{matrix}
+\right|
+=ad-bc
 $$
+
 矩阵逆满足：
 
 $$
 AA^{-1}=I
 $$
+
 其中 $I$ 是单位矩阵。
 
 这里还要特别注意，多维高斯密度的这个公式包含 $\Sigma^{-1}$ 和 $|\Sigma|^{-1/2}$，因此要求协方差矩阵可逆，通常假设它是正定矩阵。
@@ -3226,30 +3844,43 @@ $$
 课件继续讨论：
 
 $$
-p(\mathbf{x})= \frac{1}{(2\pi)^{d/2}|\Sigma|^{1/2}} \exp\left[ -\frac12(\mathbf{x}-\boldsymbol{\mu})^T \Sigma^{-1} (\mathbf{x}-\boldsymbol{\mu}) \right]
+p(\mathbf{x})=
+\frac{1}{(2\pi)^{d/2}|\Sigma|^{1/2}}
+\exp\left[
+-\frac12(\mathbf{x}-\boldsymbol{\mu})^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu})
+\right]
 $$
+
 其中：
 
 $$
 (\mathbf{x}-\boldsymbol{\mu})^T
 $$
+
 是 $1\times d$ 矩阵。
 
 $$
 \Sigma^{-1}
 $$
+
 是 $d\times d$ 矩阵。
 
 $$
 (\mathbf{x}-\boldsymbol{\mu})
 $$
+
 是 $d\times1$ 矩阵。
 
 因此：
 
 $$
-(\mathbf{x}-\boldsymbol{\mu})^T \Sigma^{-1} (\mathbf{x}-\boldsymbol{\mu})
+(\mathbf{x}-\boldsymbol{\mu})^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu})
 $$
+
 是一个标量，即 $1\times1$ 的计算结果。
 
 课件还说明：
@@ -3257,13 +3888,20 @@ $$
 如果 $\Sigma$ 正定，则 $\Sigma^{-1}$ 也正定，所以：
 
 $$
-(\mathbf{x}-\boldsymbol{\mu})^T \Sigma^{-1} (\mathbf{x}-\boldsymbol{\mu})\geq0
+(\mathbf{x}-\boldsymbol{\mu})^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu})\geq0
 $$
+
 因此：
 
 $$
--\frac12 (\mathbf{x}-\boldsymbol{\mu})^T \Sigma^{-1} (\mathbf{x}-\boldsymbol{\mu})\leq0
+-\frac12
+(\mathbf{x}-\boldsymbol{\mu})^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu})\leq0
 $$
+
 **② 概念解释**
 
 为什么要讲这个？
@@ -3273,16 +3911,21 @@ $$
 $$
 \exp(-D/2)
 $$
+
 其中：
 
 $$
-D=(\mathbf{x}-\boldsymbol{\mu})^T \Sigma^{-1} (\mathbf{x}-\boldsymbol{\mu})
+D=(\mathbf{x}-\boldsymbol{\mu})^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu})
 $$
+
 如果 $D$ 越大：
 
 $$
 e^{-D/2}
 $$
+
 就越小。
 
 因此，一般来说，样本在这种经过协方差调整的距离意义下离均值越远，概率密度越低。
@@ -3306,6 +3949,7 @@ $$
 $$
 p(\mathbf{x}\mid\omega_i)
 $$
+
 现在假设每个类别的特征都满足高斯分布，就可以把这个概率密度写成具体数学公式，进而得到分类器。
 
 ### 第 51 页｜高斯分布下的判别函数
@@ -3317,31 +3961,48 @@ $$
 $$
 g_i(\mathbf{x})=P(\omega_i\mid\mathbf{x})
 $$
+
 由于对数变换不改变分类顺序，可以使用：
 
 $$
 g_i(\mathbf{x})=\ln P(\omega_i\mid\mathbf{x})
 $$
+
 根据贝叶斯公式，并忽略对所有类别相同的项：
 
 $$
-g_i(\mathbf{x})= \ln p(\mathbf{x}\mid\omega_i) +\ln P(\omega_i)
+g_i(\mathbf{x})=
+\ln p(\mathbf{x}\mid\omega_i)
++\ln P(\omega_i)
 $$
+
 假设：
 
 $$
 p(\mathbf{x}\mid\omega_i)\sim N(\boldsymbol{\mu}_i,\Sigma_i)
 $$
+
 得到：
 
 $$
-\begin{aligned} g_i(\mathbf{x})={}& -\frac12 (\mathbf{x}-\boldsymbol{\mu}_i)^T \Sigma_i^{-1} (\mathbf{x}-\boldsymbol{\mu}_i)\\ &-\frac d2\ln(2\pi) -\frac12\ln|\Sigma_i|\\ &+\ln P(\omega_i) \end{aligned}
+\begin{aligned}
+g_i(\mathbf{x})={}&
+-\frac12
+(\mathbf{x}-\boldsymbol{\mu}_i)^T
+\Sigma_i^{-1}
+(\mathbf{x}-\boldsymbol{\mu}_i)\\
+&-\frac d2\ln(2\pi)
+-\frac12\ln|\Sigma_i|\\
+&+\ln P(\omega_i)
+\end{aligned}
 $$
+
 其中：
 
 $$
 -\frac d2\ln(2\pi)
 $$
+
 对所有类别都相同，因此比较类别时可以忽略。
 
 **② 概念解释**
@@ -3355,6 +4016,7 @@ $$
 $$
 \boldsymbol{\mu}_i,\quad\Sigma_i
 $$
+
 建立对应类别的判别函数。
 
 实际分类时不需要计算复杂的后验归一化分母，只需要比较各类别的判别函数值。
@@ -3368,16 +4030,19 @@ $$
 $$
 \Sigma_i=\sigma^2I
 $$
+
 情况 II：
 
 $$
 \Sigma_i=\Sigma
 $$
+
 情况 III：
 
 $$
 \Sigma_i\text{ 各不相同}
 $$
+
 前两种最终会形成线性判别函数，第三种一般形成二次判别函数。
 
 ---
@@ -3391,6 +4056,7 @@ $$
 $$
 \boxed{\Sigma_i=\sigma^2I}
 $$
+
 其中 $I$ 是单位矩阵。
 
 因此：
@@ -3398,21 +4064,30 @@ $$
 $$
 \Sigma_i^{-1}=\frac1{\sigma^2}I
 $$
+
 并且：
 
 $$
 |\Sigma_i|=\sigma^{2d}
 $$
+
 高斯判别函数可以化简为：
 
 $$
-\boxed{ g_i(\mathbf{x}) = -\frac{\|\mathbf{x}-\boldsymbol{\mu}_i\|^2}{2\sigma^2} +\ln P(\omega_i) }
+\boxed{
+g_i(\mathbf{x})
+=\;
+-\frac{\|\mathbf{x}-\boldsymbol{\mu}_i\|^2}{2\sigma^2}
++\ln P(\omega_i)
+}
 $$
+
 其中：
 
 $$
 \|\mathbf{x}-\boldsymbol{\mu}_i\|
 $$
+
 表示欧氏距离（Euclidean Distance）。
 
 **② 概念解释**
@@ -3422,13 +4097,23 @@ $$
 二维单位矩阵：
 
 $$
-I= \begin{bmatrix} 1&0\\ 0&1 \end{bmatrix}
+I=
+\begin{bmatrix}
+1&0\\
+0&1
+\end{bmatrix}
 $$
+
 因此：
 
 $$
-\sigma^2I= \begin{bmatrix} \sigma^2&0\\ 0&\sigma^2 \end{bmatrix}
+\sigma^2I=
+\begin{bmatrix}
+\sigma^2&0\\
+0&\sigma^2
+\end{bmatrix}
 $$
+
 这表示：
 
 不同特征的方差相同，而且协方差为 0。
@@ -3442,18 +4127,25 @@ $$
 $$
 P(\omega_1)=\cdots=P(\omega_c)
 $$
+
 那么：
 
 $$
 \ln P(\omega_i)
 $$
+
 也可以忽略。
 
 此时分类规则变成：
 
 $$
-\boxed{ \omega^*= \arg\min_i \|\mathbf{x}-\boldsymbol{\mu}_i\|^2 }
+\boxed{
+\omega^*=
+\arg\min_i
+\|\mathbf{x}-\boldsymbol{\mu}_i\|^2
+}
 $$
+
 即选择**均值向量距离当前样本最近的类别**。
 
 这就是最近均值分类器（Nearest Mean Classifier）的核心思想。
@@ -3467,40 +4159,69 @@ $$
 从上一页：
 
 $$
-g_i(\mathbf{x}) = -\frac{\|\mathbf{x}-\boldsymbol{\mu}_i\|^2}{2\sigma^2} +\ln P(\omega_i)
+g_i(\mathbf{x})
+=\;
+-\frac{\|\mathbf{x}-\boldsymbol{\mu}_i\|^2}{2\sigma^2}
++\ln P(\omega_i)
 $$
+
 展开平方项：
 
 $$
-\|\mathbf{x}-\boldsymbol{\mu}_i\|^2 = \mathbf{x}^T\mathbf{x} -2\boldsymbol{\mu}_i^T\mathbf{x} +\boldsymbol{\mu}_i^T\boldsymbol{\mu}_i
+\|\mathbf{x}-\boldsymbol{\mu}_i\|^2
+=\;
+\mathbf{x}^T\mathbf{x}
+-2\boldsymbol{\mu}_i^T\mathbf{x}
++\boldsymbol{\mu}_i^T\boldsymbol{\mu}_i
 $$
+
 得到：
 
 $$
-g_i(\mathbf{x}) = -\frac1{2\sigma^2} \left( \mathbf{x}^T\mathbf{x} -2\boldsymbol{\mu}_i^T\mathbf{x} +\boldsymbol{\mu}_i^T\boldsymbol{\mu}_i \right) +\ln P(\omega_i)
+g_i(\mathbf{x})
+=\;
+-\frac1{2\sigma^2}
+\left(
+\mathbf{x}^T\mathbf{x}
+-2\boldsymbol{\mu}_i^T\mathbf{x}
++\boldsymbol{\mu}_i^T\boldsymbol{\mu}_i
+\right)
++\ln P(\omega_i)
 $$
+
 由于：
 
 $$
 -\frac1{2\sigma^2}\mathbf{x}^T\mathbf{x}
 $$
+
 对于所有类别相同，因此可以忽略。
 
 最终得到线性判别函数：
 
 $$
-\boxed{ g_i(\mathbf{x})=\mathbf{w}_i^T\mathbf{x}+w_{i0} }
+\boxed{
+g_i(\mathbf{x})=\mathbf{w}_i^T\mathbf{x}+w_{i0}
+}
 $$
+
 其中：
 
 $$
 \boxed{\mathbf{w}_i=\frac1{\sigma^2}\boldsymbol{\mu}_i}
 $$
+
 称为权重向量（Weight Vector）。
 
 $$
-\boxed{ w_{i0}= -\frac1{2\sigma^2} \boldsymbol{\mu}_i^T\boldsymbol{\mu}_i +\ln P(\omega_i) }
+\boxed{
+w_{i0}=
+-\frac1{2\sigma^2}
+\boldsymbol{\mu}_i^T\boldsymbol{\mu}_i
++\ln P(\omega_i)
+}
 $$
+
 称为阈值或偏置（Threshold/Bias）。
 
 **② 概念解释**
@@ -3512,16 +4233,23 @@ $$
 $$
 g(\mathbf{x})=\mathbf{w}^T\mathbf{x}+b
 $$
+
 例如二维情况：
 
 $$
 g(x_1,x_2)=2x_1+3x_2+1
 $$
+
 其中：
 
 $$
-\mathbf{w}= \begin{bmatrix} 2\\3 \end{bmatrix} ,\qquad b=1
+\mathbf{w}=
+\begin{bmatrix}
+2\\3
+\end{bmatrix}
+,\qquad b=1
 $$
+
 虽然这个函数包含常数项，通常也称为线性判别函数；严格数学意义上，它属于仿射函数。
 
 **③ 联系深度学习**
@@ -3531,6 +4259,7 @@ $$
 $$
 \mathbf{y}=W\mathbf{x}+\mathbf{b}
 $$
+
 所以这类线性判别函数，可以看成现代神经网络线性分类层的数学基础之一。
 
 ---
@@ -3544,16 +4273,27 @@ $$
 $$
 \boxed{\Sigma_i=\Sigma}
 $$
+
 此时：
 
 $$
-g_i(\mathbf{x}) = -\frac12 (\mathbf{x}-\boldsymbol{\mu}_i)^T \Sigma^{-1} (\mathbf{x}-\boldsymbol{\mu}_i) +\ln P(\omega_i)
+g_i(\mathbf{x})
+=\;
+-\frac12
+(\mathbf{x}-\boldsymbol{\mu}_i)^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu}_i)
++\ln P(\omega_i)
 $$
+
 其中：
 
 $$
-(\mathbf{x}-\boldsymbol{\mu}_i)^T \Sigma^{-1} (\mathbf{x}-\boldsymbol{\mu}_i)
+(\mathbf{x}-\boldsymbol{\mu}_i)^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu}_i)
 $$
+
 称为平方马氏距离（Squared Mahalanobis Distance）。
 
 课件介绍了马哈拉诺比斯（P. C. Mahalanobis，1893–1972）。
@@ -3563,6 +4303,7 @@ $$
 $$
 \Sigma=I
 $$
+
 马氏距离退化为欧氏距离。
 
 **② 概念解释**
@@ -3570,15 +4311,30 @@ $$
 **欧氏距离（Euclidean Distance）**：
 
 $$
-d_E(\mathbf{x},\boldsymbol{\mu}) = \sqrt{ (\mathbf{x}-\boldsymbol{\mu})^T (\mathbf{x}-\boldsymbol{\mu}) }
+d_E(\mathbf{x},\boldsymbol{\mu})
+=\;
+\sqrt{
+(\mathbf{x}-\boldsymbol{\mu})^T
+(\mathbf{x}-\boldsymbol{\mu})
+}
 $$
+
 它是日常几何中的直线距离。
 
 **马氏距离（Mahalanobis Distance）**：
 
 $$
-\boxed{ d_M(\mathbf{x},\boldsymbol{\mu}) = \sqrt{ (\mathbf{x}-\boldsymbol{\mu})^T \Sigma^{-1} (\mathbf{x}-\boldsymbol{\mu}) } }
+\boxed{
+d_M(\mathbf{x},\boldsymbol{\mu})
+=\;
+\sqrt{
+(\mathbf{x}-\boldsymbol{\mu})^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu})
+}
+}
 $$
+
 它考虑特征的方差和相关性。
 
 **③ 举例理解**
@@ -3604,33 +4360,57 @@ $$
 从：
 
 $$
-g_i(\mathbf{x}) = -\frac12 (\mathbf{x}-\boldsymbol{\mu}_i)^T \Sigma^{-1} (\mathbf{x}-\boldsymbol{\mu}_i) +\ln P(\omega_i)
+g_i(\mathbf{x})
+=\;
+-\frac12
+(\mathbf{x}-\boldsymbol{\mu}_i)^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu}_i)
++\ln P(\omega_i)
 $$
+
 展开：
 
 $$
-\begin{aligned} g_i(\mathbf{x})={}& -\frac12\mathbf{x}^T\Sigma^{-1}\mathbf{x}\\ &+\boldsymbol{\mu}_i^T\Sigma^{-1}\mathbf{x}\\ &-\frac12\boldsymbol{\mu}_i^T\Sigma^{-1}\boldsymbol{\mu}_i\\ &+\ln P(\omega_i) \end{aligned}
+\begin{aligned}
+g_i(\mathbf{x})={}&
+-\frac12\mathbf{x}^T\Sigma^{-1}\mathbf{x}\\
+&+\boldsymbol{\mu}_i^T\Sigma^{-1}\mathbf{x}\\
+&-\frac12\boldsymbol{\mu}_i^T\Sigma^{-1}\boldsymbol{\mu}_i\\
+&+\ln P(\omega_i)
+\end{aligned}
 $$
+
 由于第一项：
 
 $$
 -\frac12\mathbf{x}^T\Sigma^{-1}\mathbf{x}
 $$
+
 对所有类别相同，因此可以忽略。
 
 最终得到：
 
 $$
-\boxed{ g_i(\mathbf{x})=\mathbf{w}_i^T\mathbf{x}+w_{i0} }
+\boxed{
+g_i(\mathbf{x})=\mathbf{w}_i^T\mathbf{x}+w_{i0}
+}
 $$
+
 其中：
 
 $$
 \boxed{\mathbf{w}_i=\Sigma^{-1}\boldsymbol{\mu}_i}
 $$
+
 $$
-\boxed{ w_{i0}= -\frac12\boldsymbol{\mu}_i^T\Sigma^{-1}\boldsymbol{\mu}_i +\ln P(\omega_i) }
+\boxed{
+w_{i0}=
+-\frac12\boldsymbol{\mu}_i^T\Sigma^{-1}\boldsymbol{\mu}_i
++\ln P(\omega_i)
+}
 $$
+
 **② 概念解释**
 
 这一页的结论很重要。
@@ -3658,33 +4438,58 @@ $$
 $$
 \boxed{\Sigma_i=\text{arbitrary}}
 $$
+
 此时判别函数：
 
 $$
-g_i(\mathbf{x}) = -\frac12 (\mathbf{x}-\boldsymbol{\mu}_i)^T \Sigma_i^{-1} (\mathbf{x}-\boldsymbol{\mu}_i) -\frac12\ln|\Sigma_i| +\ln P(\omega_i)
+g_i(\mathbf{x})
+=\;
+-\frac12
+(\mathbf{x}-\boldsymbol{\mu}_i)^T
+\Sigma_i^{-1}
+(\mathbf{x}-\boldsymbol{\mu}_i)
+-\frac12\ln|\Sigma_i|
++\ln P(\omega_i)
 $$
+
 不能再忽略依赖于类别的二次项。
 
 最终得到二次判别函数（Quadratic Discriminant Function）：
 
 $$
-\boxed{ g_i(\mathbf{x}) = \mathbf{x}^TW_i\mathbf{x} +\mathbf{w}_i^T\mathbf{x} +w_{i0} }
+\boxed{
+g_i(\mathbf{x})
+=\;
+\mathbf{x}^TW_i\mathbf{x}
++\mathbf{w}_i^T\mathbf{x}
++w_{i0}
+}
 $$
+
 其中：
 
 $$
 \boxed{W_i=-\frac12\Sigma_i^{-1}}
 $$
+
 称为二次项矩阵。
 
 $$
 \boxed{\mathbf{w}_i=\Sigma_i^{-1}\boldsymbol{\mu}_i}
 $$
+
 称为权重向量。
 
 $$
-\boxed{ w_{i0} = -\frac12\boldsymbol{\mu}_i^T\Sigma_i^{-1}\boldsymbol{\mu}_i -\frac12\ln|\Sigma_i| +\ln P(\omega_i) }
+\boxed{
+w_{i0}
+=\;
+-\frac12\boldsymbol{\mu}_i^T\Sigma_i^{-1}\boldsymbol{\mu}_i
+-\frac12\ln|\Sigma_i|
++\ln P(\omega_i)
+}
 $$
+
 称为阈值或偏置。
 
 **② 概念解释**
@@ -3696,11 +4501,13 @@ $$
 $$
 \Sigma
 $$
+
 所以：
 
 $$
 -\frac12\mathbf{x}^T\Sigma^{-1}\mathbf{x}
 $$
+
 是公共项，可以忽略。
 
 现在每个类别拥有自己的协方差矩阵：
@@ -3708,11 +4515,13 @@ $$
 $$
 \Sigma_1,\Sigma_2,\ldots,\Sigma_c
 $$
+
 于是：
 
 $$
 -\frac12\mathbf{x}^T\Sigma_i^{-1}\mathbf{x}
 $$
+
 会随着类别变化，不能统一删除。
 
 因此判别函数中保留二次项。
@@ -3784,8 +4593,17 @@ flowchart TD
 **③ 本页记忆公式**
 
 $$
-\boxed{ P(\omega_i\mid\mathbf{x}) = \frac{ p(\mathbf{x}\mid\omega_i)P(\omega_i) }{ \sum_j p(\mathbf{x}\mid\omega_j)P(\omega_j) } }
+\boxed{
+P(\omega_i\mid\mathbf{x})
+=\;
+\frac{
+p(\mathbf{x}\mid\omega_i)P(\omega_i)
+}{
+\sum_j p(\mathbf{x}\mid\omega_j)P(\omega_j)
+}
+}
 $$
+
 ---
 
 ### 第 58 页｜总结二：贝叶斯决策的实现与推广
@@ -3813,6 +4631,7 @@ $$
 $$
 \lambda:\Omega\times A\rightarrow\mathbb R
 $$
+
 **② 概念解释**
 
 这页总结的是贝叶斯理论如何从简单分类发展到复杂决策。
@@ -3836,8 +4655,15 @@ $$
 期望损失，又称条件风险：
 
 $$
-\boxed{ R(\alpha_i\mid\mathbf{x}) = \sum_{j=1}^{c} \lambda(\alpha_i\mid\omega_j) P(\omega_j\mid\mathbf{x}) }
+\boxed{
+R(\alpha_i\mid\mathbf{x})
+=\;
+\sum_{j=1}^{c}
+\lambda(\alpha_i\mid\omega_j)
+P(\omega_j\mid\mathbf{x})
+}
 $$
+
 对所有可能自然状态进行加权平均。
 
 一般贝叶斯决策规则：
@@ -3859,13 +4685,25 @@ $$
 **一般最小风险决策：**
 
 $$
-\boxed{ \alpha^*(\mathbf{x}) = \arg\min_{\alpha_i} R(\alpha_i\mid\mathbf{x}) }
+\boxed{
+\alpha^*(\mathbf{x})
+=\;
+\arg\min_{\alpha_i}
+R(\alpha_i\mid\mathbf{x})
+}
 $$
+
 **最小错误率分类：**
 
 $$
-\boxed{ \omega^* = \arg\max_{\omega_i} P(\omega_i\mid\mathbf{x}) }
+\boxed{
+\omega^*
+=\;
+\arg\max_{\omega_i}
+P(\omega_i\mid\mathbf{x})
+}
 $$
+
 二者之间的关系：
 
 采用 0-1 损失函数时，最小风险决策与最大后验概率分类等价。
@@ -3887,8 +4725,18 @@ $$
 高斯分布（Gaussian/Normal Density）：
 
 $$
-\boxed{ p(\mathbf{x})= \frac{1}{(2\pi)^{d/2}|\Sigma|^{1/2}} \exp\left[ -\frac12 (\mathbf{x}-\boldsymbol{\mu})^T \Sigma^{-1} (\mathbf{x}-\boldsymbol{\mu}) \right] }
+\boxed{
+p(\mathbf{x})=
+\frac{1}{(2\pi)^{d/2}|\Sigma|^{1/2}}
+\exp\left[
+-\frac12
+(\mathbf{x}-\boldsymbol{\mu})^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu})
+\right]
+}
 $$
+
 高斯概率密度下的判别函数：
 
 当：
@@ -3896,11 +4744,13 @@ $$
 $$
 \Sigma_i=\sigma^2I
 $$
+
 或者：
 
 $$
 \Sigma_i=\Sigma
 $$
+
 得到线性判别函数。
 
 当协方差矩阵可以随类别变化时：
@@ -3908,6 +4758,7 @@ $$
 $$
 \Sigma_i=\text{arbitrary}
 $$
+
 一般得到二次判别函数。
 
 **② 概念解释**
@@ -3935,8 +4786,11 @@ $$
 **01　贝叶斯公式**
 
 $$
-P(\omega_i\mid x)= \frac{p(x\mid\omega_i)P(\omega_i)} {p(x)}
+P(\omega_i\mid x)=
+\frac{p(x\mid\omega_i)P(\omega_i)}
+{p(x)}
 $$
+
 用先验和似然计算后验概率。
 
 **02　全概率公式**
@@ -3944,13 +4798,16 @@ $$
 $$
 p(x)=\sum_{i=1}^{c}p(x\mid\omega_i)P(\omega_i)
 $$
+
 计算贝叶斯公式中的归一化分母。
 
 **03　条件风险**
 
 $$
-R(\alpha_i\mid x)= \sum_j\lambda(\alpha_i\mid\omega_j)P(\omega_j\mid x)
+R(\alpha_i\mid x)=
+\sum_j\lambda(\alpha_i\mid\omega_j)P(\omega_j\mid x)
 $$
+
 根据不同错误的损失计算行动的期望代价。
 
 **04　最小风险决策**
@@ -3958,6 +4815,7 @@ $$
 $$
 \alpha^*(x)=\arg\min_{\alpha_i}R(\alpha_i\mid x)
 $$
+
 选择期望损失最小的行动。
 
 **05　最小错误率决策**
@@ -3965,13 +4823,17 @@ $$
 $$
 \omega^*=\arg\max_{\omega_i}P(\omega_i\mid x)
 $$
+
 选择后验概率最大的类别。
 
 **06　高斯判别函数**
 
 $$
-g_i(x)= -\frac12(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i) -\frac12\ln|\Sigma_i|+\ln P(\omega_i)
+g_i(x)=
+-\frac12(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)
+-\frac12\ln|\Sigma_i|+\ln P(\omega_i)
 $$
+
 利用高斯分布构造可计算的分类函数。
 
 ### 2. 适合你的学习顺序
